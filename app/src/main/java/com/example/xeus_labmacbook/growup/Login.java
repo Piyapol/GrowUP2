@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttLogin;
-    private TextView Linksignup;
+//    private TextView Linksignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +27,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         buttLogin = (Button)findViewById(R.id.buttLogin);
         buttLogin.setOnClickListener(this);
 
-        Linksignup = (TextView)findViewById(R.id.Linksignup);
-        Linksignup.setOnClickListener(this);
+//        Linksignup = (TextView)findViewById(R.id.Linksignup);
+//        Linksignup.setOnClickListener(this);
         
     }
 
@@ -41,10 +41,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 startActivity(access);
                 break;
 
-            case R.id.Linksignup:
-                Intent link = new Intent(this, SignUp.class);
-                startActivity(link);
-                break;
+//            case R.id.Linksignup:
+//                Intent link = new Intent(this, SignUp.class);
+//                startActivity(link);
+//                break;
         }
     }
 
