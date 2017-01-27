@@ -29,7 +29,7 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        this.setTitle("Tabs");
+        this.setTitle("Dashboard");
 
         createTabs();
     }

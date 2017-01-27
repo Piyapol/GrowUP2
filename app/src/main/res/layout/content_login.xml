@@ -18,7 +18,7 @@
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@color/colorInverse"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"/>
 
@@ -62,7 +62,7 @@
         android:textColor="@color/colorInverse"
         android:text="Signup for GrowUP"
         android:layout_below="@+id/buttLogin"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

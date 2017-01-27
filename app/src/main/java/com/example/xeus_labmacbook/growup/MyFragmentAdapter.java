@@ -31,7 +31,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position){
-        String[] tabs = {"Temperature", "Humidity", "Light", "Water Level", "Water Pump", "LED Control"};
+        String[] tabs = {"Temperature", "Humidity", "Light", "Water Level", "Water Pump", "LED"};
         return tabs[position];
     }
 }
