@@ -52,4 +52,6 @@ public class Dashboard extends AppCompatActivity {
         tabLayout.getTabAt(5).setIcon(R.drawable.gasoline_pump);
         tabLayout.getTabAt(6).setIcon(R.drawable.led_bulb);
     }
+
+
 }

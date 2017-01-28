@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId())
         {
             case R.id.buttLogin:
-                Intent access = new Intent(this, Dashboard.class);
+                Intent access = new Intent(this, Home.class);
                 startActivity(access);
                 break;
 
