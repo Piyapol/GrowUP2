@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:text="Sign Up"
-        android:textColor="@color/colorInverse"
+        android:textColor="@color/colorText"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/sRePassword"
         android:layout_marginTop="15dp"/>
