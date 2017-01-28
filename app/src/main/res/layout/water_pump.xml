@@ -6,6 +6,17 @@
         android:id="@+id/sWater_Pump"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Water Pump"
-        android:layout_centerHorizontal="true"/>
+        android:text="Water Pump:"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <ToggleButton
+        android:id="@+id/buttPump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/sWater_Pump"
+        android:layout_marginTop="70dp"/>
 </RelativeLayout>

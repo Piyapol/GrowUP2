@@ -5,4 +5,5 @@
     <color name="colorAccent">#34495E</color>
     <color name="colorInverse">#ECF0F1</color>
     <color name="colorInverseDark">#BDC3C7</color>
+    <color name="colorText">#ffffff</color>
 </resources>

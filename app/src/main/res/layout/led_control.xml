@@ -7,5 +7,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LED"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <ToggleButton
+        android:id="@+id/buttLED"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_below="@+id/sLED"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        />
 </RelativeLayout>
