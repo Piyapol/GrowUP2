@@ -13,7 +13,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount(){
-        return 6;
+        return 7;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position){
-//        String[] tabs = {"Temperature", "Humidity","Soil", "Light", "Water Level", "Water Pump", "LED"};
+//        String[] tabs = {"Temperature", "Humidity", "Soil", "Light", "Water Level", "Water Pump", "LED"};
         return null;//tabs[position];
     }
 }
