@@ -43,5 +43,13 @@ public class Dashboard extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.thermometer);
+        tabLayout.getTabAt(1).setIcon(R.drawable.humidity);
+        tabLayout.getTabAt(2).setIcon(R.drawable.grass);
+        tabLayout.getTabAt(3).setIcon(R.drawable.light_bulb);
+        tabLayout.getTabAt(4).setIcon(R.drawable.pitcher_with_levels);
+        tabLayout.getTabAt(5).setIcon(R.drawable.gasoline_pump);
+        tabLayout.getTabAt(6).setIcon(R.drawable.led_bulb);
     }
 }
