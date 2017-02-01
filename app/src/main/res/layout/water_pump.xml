@@ -2,21 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/sWater_Pump"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Water Pump:"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#fff"
+        android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/sWater_Pump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Water Pump:"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-    <ToggleButton
-        android:id="@+id/buttPump"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorText"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/sWater_Pump"
-        android:layout_marginTop="70dp"/>
+        <ToggleButton
+            android:id="@+id/buttPump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorText"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/sWater_Pump"
+            android:layout_marginTop="70dp"/>
+    </LinearLayout>
 </RelativeLayout>
