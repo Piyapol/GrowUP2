@@ -18,14 +18,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        buttSignup = (Button)findViewById(R.id.buttSignup);
+        buttSignup = (Button)findViewById(R.id.btn_signup);
         buttSignup.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttSignup:
+            case R.id.btn_signup:
                 Intent access = new Intent(this, Dashboard.class);
                 startActivity(access);
                 break;

@@ -20,10 +20,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        buttLogin = (Button)findViewById(R.id.buttLogin);
+        buttLogin = (Button)findViewById(R.id.btn_login);
         buttLogin.setOnClickListener(this);
 
-        Linksignup = (TextView)findViewById(R.id.Linksignup);
+        Linksignup = (TextView)findViewById(R.id.link_signup);
         Linksignup.setOnClickListener(this);
         
     }
@@ -32,12 +32,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     {
         switch (view.getId())
         {
-            case R.id.buttLogin:
+            case R.id.btn_login:
                 Intent access = new Intent(this, Home.class);
                 startActivity(access);
                 break;
 
-            case R.id.Linksignup:
+            case R.id.link_signup:
                 Intent link = new Intent(this, SignUp.class);
                 startActivity(link);
                 break;
