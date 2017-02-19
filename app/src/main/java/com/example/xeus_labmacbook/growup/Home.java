@@ -13,6 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,15 +30,6 @@ public class Home extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -43,6 +40,8 @@ public class Home extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         this.setTitle("GrowUP");
+
+
 
         createTabs();
 
@@ -58,13 +57,9 @@ public class Home extends AppCompatActivity
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.thermometer);
-        tabLayout.getTabAt(1).setIcon(R.drawable.humidity);
-        tabLayout.getTabAt(2).setIcon(R.drawable.grass);
-        tabLayout.getTabAt(3).setIcon(R.drawable.light);
-        tabLayout.getTabAt(4).setIcon(R.drawable.levels);
-        tabLayout.getTabAt(5).setIcon(R.drawable.pump);
-        tabLayout.getTabAt(6).setIcon(R.drawable.led);
+        tabLayout.getTabAt(0).setIcon(R.drawable.dashboard);
+        tabLayout.getTabAt(1).setIcon(R.drawable.controls);
+        tabLayout.getTabAt(2).setIcon(R.drawable.time);
     }
 
 

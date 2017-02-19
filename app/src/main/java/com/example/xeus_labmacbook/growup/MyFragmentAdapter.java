@@ -13,7 +13,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount(){
-        return 7;
+        return 3;
     }
 
     @Override
@@ -22,10 +22,10 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
             case 0: return new Temperature();
             case 1: return new Humidity();
             case 2: return new Soil();
-            case 3: return new Light();
-            case 4: return new WaterLevel();
-            case 5: return new WaterPump();
-            case 6: return new LEDControl();
+//            case 3: return new Light();
+//            case 4: return new WaterLevel();
+//            case 5: return new WaterPump();
+//            case 6: return new LEDControl();
             default: return new Temperature();
         }
     }

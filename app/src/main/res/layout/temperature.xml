@@ -15,6 +15,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tempText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -23,29 +24,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/circle_shape"
-                android:indeterminate="false"
-                android:max="100"
-                android:progress="29"
-                android:progressDrawable="@drawable/circular_progress_bar" />
 
-            <TextView
-                android:id="@+id/progress_circle_text"
+            <ListView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:text="29 C"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:layout_height="350dp"
+                android:id="@+id/listView"
+                android:layout_below="@id/tempText"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
 
