@@ -8,13 +8,13 @@ public class Item {
     private int mImgResource;
     private String mTextLine1;
     private String mTextLine2;
-    private  boolean mIsChecked;
+//    private  boolean mIsChecked;
 
-    public Item(int imgResource, String textLine1, String textLine2, boolean isChecked) {
+    public Item(int imgResource, String textLine1, String textLine2) {
         mImgResource = imgResource;
         mTextLine1 = textLine1;
         mTextLine2 = textLine2;
-        mIsChecked = isChecked;
+//        mIsChecked = isChecked;
     }
 
     public void setImgResource(int imgResource) {
@@ -38,12 +38,12 @@ public class Item {
         return mTextLine2;
     }
 
-    public void setChecked(boolean isChecked) {
-        mIsChecked = isChecked;
-    }
-    public boolean getChecked() {
-        return mIsChecked;
-    }
+//    public void setChecked(boolean isChecked) {
+//        mIsChecked = isChecked;
+//    }
+//    public boolean getChecked() {
+//        return mIsChecked;
+//    }
 
 
 }

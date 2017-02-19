@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class Temperature extends Fragment{
 
+    private ListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -23,20 +24,22 @@ public class Temperature extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
         String[] names = {"Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
         String[] units = {"Celcius", "Percent", "Percent", "Lux", "level"};
         int[] icons = {R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.light, R.drawable.levels};
         ArrayList<Item> arrayList = new ArrayList<>();
         for(int i = 0; i < names.length; i++) {
-            arrayList.add(new Item(icons[i], names[i], units[i], false));
+            arrayList.add(new Item(icons[i], names[i], units[i]));
         }
 
-        ListView listView = (ListView)getView().findViewById(R.id.listView);
+        View rootView = inflater.inflate(R.layout.temperature, container, false);
+
+        listView = (ListView) rootView.findViewById(R.id.listView);
         final MyAdapter myAdapter = new MyAdapter(getActivity().getBaseContext(), R.layout.item, arrayList);
         listView.setAdapter(myAdapter);
 
-        View view = inflater.inflate(R.layout.temperature, container, false);
-        return view;
+        return rootView;
     }
 
 }
