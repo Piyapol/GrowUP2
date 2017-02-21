@@ -25,17 +25,17 @@ public class Humidity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         String[] names = {"Temperature", "Humidity", "Soil moisture"};
 
-        int[] icons = {R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.light, R.drawable.levels};
-        ArrayList<Item> arrayList = new ArrayList<>();
+        int[] icons = {R.drawable.thermometer, R.drawable.humidity, R.drawable.grass};
+        ArrayList<ItemControl> arrayList = new ArrayList<>();
         for(int i = 0; i < names.length; i++) {
-            arrayList.add(new Item(icons[i], names[i]));
+            arrayList.add(new ItemControl(icons[i], names[i],false));
         }
 
         View rootView = inflater.inflate(R.layout.humidity, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.listView);
-        final MyAdapter myAdapter = new MyAdapter(getActivity().getBaseContext(), R.layout.item_control, arrayList);
-        listView.setAdapter(myAdapter);
+        listView = (ListView) rootView.findViewById(R.id.listViewControl);
+        final AdapterControl adapterControl = new AdapterControl(getActivity().getBaseContext(), R.layout.item_control, arrayList);
+        listView.setAdapter(adapterControl);
 
         return rootView;
     }

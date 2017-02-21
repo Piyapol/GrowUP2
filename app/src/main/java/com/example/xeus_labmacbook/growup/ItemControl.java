@@ -7,13 +7,13 @@ package com.example.xeus_labmacbook.growup;
 public class ItemControl {
     private int mImgResource;
     private String mTextLine1;
-    private String mTextLine2;
+//    private String mTextLine2;
     private  boolean mIsChecked;
 
-    public ItemControl(int imgResource, String textLine1, String textLine2, Boolean isChecked) {
+    public ItemControl(int imgResource, String textLine1, Boolean isChecked) {
         mImgResource = imgResource;
         mTextLine1 = textLine1;
-        mTextLine2 = textLine2;
+//        mTextLine2 = textLine2;
         mIsChecked = isChecked;
     }
 
@@ -31,12 +31,12 @@ public class ItemControl {
         return mTextLine1;
     }
 
-    public void setTextLine2(String textLine2) {
-        mTextLine2 = textLine2;
-    }
-    public String getTextLine2() {
-        return mTextLine2;
-    }
+//    public void setTextLine2(String textLine2) {
+//        mTextLine2 = textLine2;
+//    }
+//    public String getTextLine2() {
+//        return mTextLine2;
+//    }
 
     public void setChecked(boolean isChecked) {
         mIsChecked = isChecked;

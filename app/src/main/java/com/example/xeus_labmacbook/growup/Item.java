@@ -17,6 +17,8 @@ public class Item {
 //        mIsChecked = isChecked;
     }
 
+
+
     public void setImgResource(int imgResource) {
         mImgResource = imgResource;
     }
