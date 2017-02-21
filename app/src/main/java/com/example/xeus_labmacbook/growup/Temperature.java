@@ -28,7 +28,7 @@ public class Temperature extends Fragment{
         String[] names = {"Auto","Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
         String[] units = {"System","Celcius", "Percent", "Percent", "Lux", "level"};
         String[] values = {" ","21","30","15","540","5"};
-        int[] icons = {R.drawable.settings,R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.light, R.drawable.levels};
+        int[] icons = {R.drawable.laptop,R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.sun, R.drawable.levels};
         ArrayList<Item> arrayList = new ArrayList<>();
         for(int i = 0; i < names.length; i++) {
             arrayList.add(new Item(icons[i], names[i], units[i], values[i]));

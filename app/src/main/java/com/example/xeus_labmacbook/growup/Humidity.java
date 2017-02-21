@@ -25,7 +25,7 @@ public class Humidity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         String[] names = {"Auto System", "Light", "Water pump"};
         String[] bools = {"On/Off", "On/Off", "On/Off"};
-        int[] icons = {R.drawable.thermometer, R.drawable.humidity, R.drawable.grass};
+        int[] icons = {R.drawable.laptop, R.drawable.lightbulb, R.drawable.sea};
         ArrayList<ItemControl> arrayList = new ArrayList<>();
         for(int i = 0; i < names.length; i++) {
             arrayList.add(new ItemControl(icons[i], names[i], bools[i],false));
