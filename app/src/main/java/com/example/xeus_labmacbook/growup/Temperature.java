@@ -25,12 +25,13 @@ public class Temperature extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
-        String[] names = {"Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
-        String[] units = {"Celcius", "Percent", "Percent", "Lux", "level"};
-        int[] icons = {R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.light, R.drawable.levels};
+        String[] names = {"Auto","Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
+        String[] units = {"System","Celcius", "Percent", "Percent", "Lux", "level"};
+        String[] values = {" ","21","30","15","540","5"};
+        int[] icons = {R.drawable.settings,R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.light, R.drawable.levels};
         ArrayList<Item> arrayList = new ArrayList<>();
         for(int i = 0; i < names.length; i++) {
-            arrayList.add(new Item(icons[i], names[i], units[i]));
+            arrayList.add(new Item(icons[i], names[i], units[i], values[i]));
         }
 
         View rootView = inflater.inflate(R.layout.temperature, container, false);

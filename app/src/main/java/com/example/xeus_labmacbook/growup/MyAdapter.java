@@ -41,11 +41,13 @@ public class MyAdapter extends ArrayAdapter{
         //กำหนดภาพให้แก่ ImageView
         ImageView img = (ImageView) view.findViewById(R.id.imageView);
         img.setImageResource(item.getImgResource());
-        //กำหนดข้อความในบรรทัดที่ 1 และ 2
+        //กำหนดข้อความในบรรทัดที่ 1 2 และ 3
         TextView tv1 = (TextView)view.findViewById(R.id.textView_line1);
         tv1.setText(item.getTextLine1());
         TextView tv2 = (TextView)view.findViewById(R.id.textView_line2);
         tv2.setText(item.getTextLine2());
+        TextView tv3 = (TextView)view.findViewById(R.id.textView_line3);
+        tv3.setText(item.getTextLine3());
 
 //        CheckBox checkBox = (CheckBox)view.findViewById(R.id.checkBox);
 //        checkBox.setTag(position);
