@@ -43,8 +43,8 @@ public class AdapterControl extends ArrayAdapter {
         //กำหนดข้อความในบรรทัดที่ 1 และ 2
         TextView tv1 = (TextView)view.findViewById(R.id.textView_line1);
         tv1.setText(itemControl.getTextLine1());
-//        TextView tv2 = (TextView)view.findViewById(R.id.textView_line2);
-//        tv2.setText(item.getTextLine2());
+        TextView tv2 = (TextView)view.findViewById(R.id.textView_line2);
+        tv2.setText(itemControl.getTextLine2());
 
         Switch switchControl = (Switch)view.findViewById(R.id.switchControl);
         switchControl.setTag(position);
