@@ -64,7 +64,7 @@ public class SignUp extends AppCompatActivity {
         _signupButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(SignUp.this,
-                R.style.AppTheme_NoActionBar);
+                R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
@@ -94,6 +94,8 @@ public class SignUp extends AppCompatActivity {
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        startActivity(intent);
         finish();
     }
 

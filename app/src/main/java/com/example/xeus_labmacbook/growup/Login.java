@@ -21,6 +21,7 @@ public class Login extends AppCompatActivity  {
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private  static  final int REQUEST_LOGIN = 0;
 
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
@@ -65,7 +66,7 @@ public class Login extends AppCompatActivity  {
         _loginButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(Login.this,
-                R.style.AppTheme_NoActionBar);
+                R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
@@ -107,6 +108,8 @@ public class Login extends AppCompatActivity  {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        startActivityForResult(intent, REQUEST_LOGIN);
         finish();
     }
 
