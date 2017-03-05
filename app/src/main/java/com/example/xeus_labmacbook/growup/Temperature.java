@@ -1,6 +1,7 @@
 package com.example.xeus_labmacbook.growup;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +33,7 @@ public class Temperature extends Fragment{
     int[] icons;
     String[] names = {"Auto","Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
     String[] units = {"System","Celcius", "Percent", "Percent", "Lux", "level"};
-    String[] values = {" ","21","30","15","540","5"};
+//    String[] values = {" ","21","30","15","540","5"};
 
 
     @Override
@@ -51,10 +52,50 @@ public class Temperature extends Fragment{
         return rootView;
     }
 
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//
+//        new CountDownTimer(500, 1000) {
+//
+//            public void onTick(long millisUntilFinished) {
+////                mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+//
+//            }
+//
+//            public void onFinish() {
+////                mTextField.setText("done!");
+//                GetData();
+//            }
+//        }.start();
+//
+//    }
+
+    CountDownTimer cdt;
+
     @Override
     public void onResume() {
         super.onResume();
-        GetData();
+
+        cdt = new CountDownTimer(1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+
+                cdt.start();
+                GetData();
+            }
+        }.start();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+        cdt.cancel();
     }
 
     private  void GetData()
@@ -86,8 +127,6 @@ public class Temperature extends Fragment{
 
                 }
 
-
-
                 myAdapter = new MyAdapter(getActivity().getBaseContext(), R.layout.item, arrayList);
 
                 listView.setAdapter(myAdapter);
@@ -96,7 +135,6 @@ public class Temperature extends Fragment{
             @Override
             public void onFailure(Call<EnviromentalModel>call, Throwable t) {
                 // Log error here since request failed
-
                 Log.e(" MAIN  onFailure ", t.toString());
 
             }
