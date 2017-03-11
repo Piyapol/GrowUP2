@@ -11,8 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.xeus_labmacbook.growup.model.RegisterModel;
+import com.example.xeus_labmacbook.growup.network.APIClient;
+import com.example.xeus_labmacbook.growup.service.APIService;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 //import butterknife.Bind;
 
 public class SignUp extends AppCompatActivity {
@@ -54,12 +61,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signup() {
-//        User user = new User(
-//                _nameText.getText().toString(),
-//                _emailText.getText().toString(),
-//               _passwordText.getText().toString()
-//        );
-//            GetData(user);
+
 
         Log.e(TAG, "Signup");
 
@@ -85,16 +87,28 @@ public class SignUp extends AppCompatActivity {
 
         // TODO: Implement your own signup logic here.
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
-                        onSignupSuccess();
-                        // onSignupFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 1500);
+        APIService service = APIClient.getRetrofit().create(APIService.class);
+
+        Call<RegisterModel> call = service.Register(email, password,name);
+
+        call.enqueue(new Callback<RegisterModel>() {
+
+            @Override
+            public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
+
+                progressDialog.dismiss();
+                onSignupSuccess();
+                Log.e(TAG,"Success");
+            }
+
+            @Override
+            public void onFailure(Call<RegisterModel> call, Throwable t) {
+                // handle execution failures like no internet connectivity
+                progressDialog.dismiss();
+                onSignupFailed();
+                Log.e(TAG,"False");
+            }
+        });
     }
 
 

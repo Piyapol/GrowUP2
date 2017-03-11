@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.example.xeus_labmacbook.growup.R;
 
@@ -220,8 +218,8 @@ public class AlarmInstance implements ClockContract.InstancesColumns {
         String dupSelector = AlarmInstance.ALARM_ID + " = " + instance.mAlarmId;
         for (AlarmInstance otherInstances : getInstances(contentResolver, dupSelector)) {
             if (otherInstances.getAlarmTime().equals(instance.getAlarmTime())) {
-                Log.e("Detected duplicate instance in DB. Updating " + otherInstances + " to "
-                        + instance);
+//                Log.e("Detected duplicate instance in DB. Updating " + otherInstances + " to "
+//                        + instance);
                 // Copy over the new instance values and update the db
                 instance.mId = otherInstances.mId;
                 updateInstance(contentResolver, instance);

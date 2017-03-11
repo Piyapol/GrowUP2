@@ -11,17 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.xeus_labmacbook.growup.network.Comunicator;
+import com.example.xeus_labmacbook.growup.model.ServerResponse;
+import com.example.xeus_labmacbook.growup.network.APIClient;
+import com.example.xeus_labmacbook.growup.service.APIService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 //import butterknife.Bind;
 
 
 public class Login extends AppCompatActivity  {
 
-
-    private Comunicator communicator;
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     private  static  final int REQUEST_LOGIN = 0;
@@ -79,19 +82,27 @@ public class Login extends AppCompatActivity  {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        usePost(email,password);
+        APIService service = APIClient.getRetrofit().create(APIService.class);
 
-        // TODO: Implement your own authentication logic here.
+        Call<ServerResponse> call = service.Login(email, password);
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 1500);
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+
+                progressDialog.dismiss();
+                onLoginSuccess();
+                Log.e(TAG,"Success");
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                // handle execution failures like no internet connectivity
+                progressDialog.dismiss();
+                onLoginFailed();
+                Log.e(TAG,"False");
+            }
+        });
     }
 
 
@@ -149,7 +160,5 @@ public class Login extends AppCompatActivity  {
         return valid;
     }
 
-    private void usePost(String email, String password){
-        communicator.loginPost(email, password);
-    }
+
 }
