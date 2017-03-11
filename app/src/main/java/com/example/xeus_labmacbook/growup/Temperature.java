@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.xeus_labmacbook.growup.Config.Config;
 import com.example.xeus_labmacbook.growup.model.EnviromentalModel;
-import com.example.xeus_labmacbook.growup.model.Environmental;
+import com.example.xeus_labmacbook.growup.network.APIClient;
 import com.example.xeus_labmacbook.growup.service.APIService;
 
 import java.util.ArrayList;
@@ -31,8 +29,8 @@ public class Temperature extends Fragment{
 
     private MyAdapter myAdapter;
     int[] icons;
-    String[] names = {"Auto","Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
-    String[] units = {"System","Celcius", "Percent", "Percent", "Lux", "level"};
+    String[] names = {"Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
+    String[] units = {"Celcius", "Percent", "Percent", "Lux", "level"};
 //    String[] values = {" ","21","30","15","540","5"};
 
 
@@ -47,7 +45,7 @@ public class Temperature extends Fragment{
         View rootView = inflater.inflate(R.layout.temperature, container, false);
         listView = (ListView) rootView.findViewById(R.id.listView);
 
-        icons = new int[]{R.drawable.laptop, R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.sun, R.drawable.levels};
+        icons = new int[]{ R.drawable.thermometer, R.drawable.humidity, R.drawable.grass, R.drawable.sun, R.drawable.levels};
 
         return rootView;
     }
@@ -77,7 +75,7 @@ public class Temperature extends Fragment{
     public void onResume() {
         super.onResume();
 
-        cdt = new CountDownTimer(1000, 1000) {
+        cdt = new CountDownTimer(1000, 7000) {
 
             public void onTick(long millisUntilFinished) {
 
@@ -100,7 +98,7 @@ public class Temperature extends Fragment{
 
     private  void GetData()
     {
-        APIService apiService = Config.getClient().create(APIService.class);
+        APIService apiService = APIClient.getRetrofit().create(APIService.class);
 
         Call<EnviromentalModel> call = apiService.getData();
         call.enqueue(new Callback<EnviromentalModel>() {
@@ -112,16 +110,16 @@ public class Temperature extends Fragment{
                     Log.e(" MAIN "," name : "+response.body().getData().get(i).getCusId());
 
                     //for(int j = 0; j < names.length; j++) {
-                        arrayList.add(new Item(icons[0], names[0], units[0], " "));
-                        arrayList.add(new Item(icons[1], names[1], units[1],
+//                        arrayList.add(new Item(icons[0], names[0], units[0], " "));
+                        arrayList.add(new Item(icons[0], names[0], units[0],
                                 response.body().getData().get(i).getTempValue()));
-                        arrayList.add(new Item(icons[2], names[2], units[2],
+                        arrayList.add(new Item(icons[1], names[1], units[1],
                                 response.body().getData().get(i).getAirhumidValue()));
-                        arrayList.add(new Item(icons[3], names[3], units[3],
+                        arrayList.add(new Item(icons[2], names[2], units[2],
                                 response.body().getData().get(i).getSoilValue()));
-                        arrayList.add(new Item(icons[4], names[4], units[4],
+                        arrayList.add(new Item(icons[3], names[3], units[3],
                                 response.body().getData().get(i).getLightValue()));
-                        arrayList.add(new Item(icons[5], names[5], units[5],
+                        arrayList.add(new Item(icons[4], names[4], units[4],
                                 response.body().getData().get(i).getWaterlvlValue()));
                     //}
 

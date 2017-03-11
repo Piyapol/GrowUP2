@@ -54,7 +54,14 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signup() {
-        Log.d(TAG, "Signup");
+//        User user = new User(
+//                _nameText.getText().toString(),
+//                _emailText.getText().toString(),
+//               _passwordText.getText().toString()
+//        );
+//            GetData(user);
+
+        Log.e(TAG, "Signup");
 
         if (!validate()) {
             onSignupFailed();
@@ -87,7 +94,7 @@ public class SignUp extends AppCompatActivity {
                         // onSignupFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 1500);
     }
 
 
@@ -160,7 +167,29 @@ public class SignUp extends AppCompatActivity {
 
         return valid;
     }
+
+
+
+//    private void GetData(User user) {
+//        APIService apiService = Config.getClient().create(APIService.class);
+//
+//        Call<User> call = apiService.CreateAcount(user);
+//        call.enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                Toast.makeText(SignUp.this, "Excellent" + response.body().getId(), Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//                Toast.makeText(SignUp.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//    }
 }
+
+
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -183,3 +212,6 @@ public class SignUp extends AppCompatActivity {
 //        }
 //    }
 //}
+
+
+
