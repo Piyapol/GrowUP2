@@ -97,8 +97,19 @@ public class SignUp extends AppCompatActivity {
             public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
 
                 progressDialog.dismiss();
-                onSignupSuccess();
+
                 Log.e(TAG,"Success");
+
+                if(response.body().isError()== true){
+                    onSignupFailed();
+                }
+                else{
+                    onSignupSuccess();
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
 
             @Override
@@ -113,16 +124,14 @@ public class SignUp extends AppCompatActivity {
 
 
     public void onSignupSuccess() {
+        Toast.makeText(getBaseContext(), "Signup Success", Toast.LENGTH_LONG).show();
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
-        Intent intent = new Intent(getApplicationContext(), Home.class);
-        startActivity(intent);
-        finish();
+
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
+        Toast.makeText(getBaseContext(), "Signup failed", Toast.LENGTH_LONG).show();
         _signupButton.setEnabled(true);
     }
 

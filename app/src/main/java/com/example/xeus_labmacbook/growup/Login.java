@@ -91,8 +91,18 @@ public class Login extends AppCompatActivity  {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 
                 progressDialog.dismiss();
-                onLoginSuccess();
+//                onLoginSuccess();
                 Log.e(TAG,"Success");
+
+                if(response.body().isError()== true){
+                   onLoginFailed();
+                }
+                else{
+                    onLoginSuccess();
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    startActivityForResult(intent, REQUEST_LOGIN);
+                    finish();
+                }
             }
 
             @Override
@@ -125,10 +135,8 @@ public class Login extends AppCompatActivity  {
     }
 
     public void onLoginSuccess() {
+        Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
         _loginButton.setEnabled(true);
-        Intent intent = new Intent(getApplicationContext(), Home.class);
-        startActivityForResult(intent, REQUEST_LOGIN);
-        finish();
     }
 
     public void onLoginFailed() {
