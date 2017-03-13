@@ -53,7 +53,7 @@ public class Home extends AppCompatActivity
 
         tabLayout.getTabAt(0).setIcon(R.drawable.dashboard);
         tabLayout.getTabAt(1).setIcon(R.drawable.controls);
-        tabLayout.getTabAt(2).setIcon(R.drawable.time);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.time);
     }
 
 

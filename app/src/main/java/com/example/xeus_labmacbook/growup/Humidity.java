@@ -1,11 +1,22 @@
 package com.example.xeus_labmacbook.growup;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.Toast;
+
+import com.example.xeus_labmacbook.growup.model.ControlModel;
+import com.example.xeus_labmacbook.growup.network.APIClient;
+import com.example.xeus_labmacbook.growup.service.APIService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by xeus_labmacbook on 1/26/2017 AD.
@@ -14,10 +25,17 @@ import android.widget.ListView;
 public class Humidity extends Fragment {
 
     private static final String TAG = "ControlActivity";
-    private  ListView listView;
-//    int[] icons;
-//    String[] names = {"Auto System", "Light", "Water pump"};
-//    String[] bools = {"On/Off", "On/Off", "On/Off"};
+
+    private boolean sw_auto = false;
+    private boolean sw_water = false;
+    private boolean sw_light = false;
+    private boolean repeat = false;
+
+    private Switch sw1;
+    private Switch sw2;
+    private Switch sw3;
+
+    private CountDownTimer cdt;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -28,49 +46,68 @@ public class Humidity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         View rootView = inflater.inflate(R.layout.humidity, container, false);
-//        listView = (ListView) rootView.findViewById(R.id.listViewControl);
-//        icons = new int[]  {R.drawable.laptop, R.drawable.lightbulb, R.drawable.sea};
+
+        sw1 = (Switch) rootView.findViewById(R.id.switchControl);
+        sw2 = (Switch) rootView.findViewById(R.id.switchControl2);
+        sw3 = (Switch) rootView.findViewById(R.id.switchControl3);
+
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        SendData();
+
+        cdt = new CountDownTimer(1000, 7000) {
+
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+
+                cdt.start();
+                SendData();
+                Log.e(TAG,"Sendata");
+            }
+        }.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        cdt.cancel();
     }
 
     public void SendData(){
 
-//        ArrayList<ItemControl> arrayList = new ArrayList<>();
-//        for(int i = 0; i < names.length; i++) {
-//            arrayList.add(new ItemControl(icons[0], names[0], bools[0],false));
-//            arrayList.add(new ItemControl(icons[1], names[1], bools[1],false));
-//            arrayList.add(new ItemControl(icons[2], names[2], bools[2],false));
-//        }
+        sw_auto = sw1.isChecked();
+        sw_light = sw2.isChecked();
+        sw_water = sw3.isChecked();
+        Log.e(TAG, String.valueOf(sw_auto));
+        Log.e(TAG, String.valueOf(sw_light));
+        Log.e(TAG, String.valueOf(sw_water));
 
-//        final AdapterControl adapterControl = new AdapterControl(getActivity().getBaseContext(), R.layout.item_control, arrayList);
-//        listView.setAdapter(adapterControl);
+        APIService apiService = APIClient.getRetrofit().create(APIService.class);
 
+        Call<ControlModel> call = apiService.Control(sw_auto,sw_water,sw_light,repeat);
 
+        call.enqueue(new Callback<ControlModel>() {
+            @Override
+            public void onResponse(Call<ControlModel> call, Response<ControlModel> response) {
+                Log.e(TAG,"Success");
 
-//        APIService apiService = APIClient.getRetrofit().create(APIService.class);
-//        Call<ControlModel> call = apiService.Control(system,light,water);
-//        call.enqueue(new Call<ControlModel>(){
-//
-//            @Override
-//            public void onResponse( Call<ControlModel> call,Response<ControlModel> response){
-//                Log.e(TAG,"Success");
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ControlModel> call, Throwable t) {
-//                // handle execution failures like no internet connectivity
-//                Log.e(TAG,"False");
-//            }
-//
-//        });
+                if(response.body().isError() == true){
+                    Toast.makeText(getContext(), "Send Data Failure", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ControlModel> call, Throwable t) {
+                Log.e(TAG,"Falied");
+                Toast.makeText(getContext(), "Send Data onFailure", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
-
-
-}
+   }

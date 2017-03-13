@@ -13,7 +13,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount(){
-        return 3;
+        return 2;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
         switch(position){
             case 0: return new Temperature();
             case 1: return new Humidity();
-            case 2: return new Soil();
+//            case 2: return new Soil();
 //            case 3: return new Light();
 //            case 4: return new WaterLevel();
 //            case 5: return new WaterPump();

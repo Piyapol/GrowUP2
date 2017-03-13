@@ -26,13 +26,10 @@ import retrofit2.Response;
 public class Temperature extends Fragment{
 
     private ListView listView;
-
     private MyAdapter myAdapter;
     int[] icons;
     String[] names = {"Temperature", "Humidity", "Soil moisture", "Light", "Water level"};
     String[] units = {"Celcius", "Percent", "Percent", "Lux", "level"};
-//    String[] values = {" ","21","30","15","540","5"};
-
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -50,24 +47,6 @@ public class Temperature extends Fragment{
         return rootView;
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//
-//        new CountDownTimer(500, 1000) {
-//
-//            public void onTick(long millisUntilFinished) {
-////                mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-//
-//            }
-//
-//            public void onFinish() {
-////                mTextField.setText("done!");
-//                GetData();
-//            }
-//        }.start();
-//
-//    }
 
     CountDownTimer cdt;
 

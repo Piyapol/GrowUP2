@@ -37,8 +37,9 @@ public interface APIService {
     @FormUrlEncoded
     @POST("control.php")
     Call<ControlModel> Control(
-            @Field("system") boolean system,
-            @Field("light") boolean light,
-            @Field("water") boolean water
+            @Field("sw_auto") boolean sw_auto,
+            @Field("sw_water") boolean sw_water,
+            @Field("sw_light") boolean sw_light,
+            @Field("repeat") boolean repeat
     );
 }
