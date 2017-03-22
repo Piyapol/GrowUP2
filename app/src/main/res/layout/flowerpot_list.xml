@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardUseCompatPadding="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent" android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:id="@+id/imageViewFlowerpot"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="#Flowerpot Name"
+                android:textSize="25sp"
+                android:id="@+id/textView_FlowerpotName"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageViewFlowerpot"
+                android:layout_toEndOf="@+id/imageViewFlowerpot" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connect Device:"
+                android:textSize="18sp"
+                android:id="@+id/textView_Connect"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@+id/textView_FlowerpotName"
+                android:layout_alignLeft="@+id/textView_FlowerpotName"
+                android:layout_alignStart="@+id/textView_FlowerpotName" />
+
+            <TextView
+                android:id="@+id/textView_Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" OFF"
+                android:textSize="18dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_below="@+id/textView_FlowerpotName"
+                android:layout_toRightOf="@+id/textView_Connect"
+                android:layout_toEndOf="@+id/textView_Connect"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

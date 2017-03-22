@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "603454001642",
+    "firebase_url": "https://growup-b0a97.firebaseio.com",
+    "project_id": "growup-b0a97",
+    "storage_bucket": "growup-b0a97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603454001642:android:da866bd76fa94f5e",
+        "android_client_info": {
+          "package_name": "com.example.xeus_labmacbook.growup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603454001642-qsc604t0b459cpntdi4t1fqpc16h0dea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo1hNOg0o7BRVzMHoDnyGtOqyTtUHJw3Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

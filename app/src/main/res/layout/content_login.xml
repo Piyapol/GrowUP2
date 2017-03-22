@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:text="piyapolr56@email.nu.ac.th"
+                    android:text="bird@email.com"
                     android:hint="Email"
                     android:textColor="@color/colorText"/>
             </android.support.design.widget.TextInputLayout>
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:text="asdfghj"
+                    android:text="1234"
                     android:hint="Password"
                     android:textColor="@color/colorText"/>
             </android.support.design.widget.TextInputLayout>
