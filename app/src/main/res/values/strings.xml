@@ -953,4 +953,5 @@
         <item>On/Off Switch</item>
     </string-array>
     <string name="title_activity_plant_profile">PlantProfile</string>
+    <string name="title_activity_flowerpot">Flowerpot</string>
 </resources>
