@@ -35,8 +35,8 @@ public class Home extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         this.setTitle("GrowUP");
 
@@ -101,10 +101,10 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_flowerpot) {
-           Intent access = new Intent(this, Flowerpot.class);
+           Intent access = new Intent(Home.this, Flowerpot.class);
             startActivity(access);
         } else if (id == R.id.nav_plant) {
-            Intent access = new Intent(this, PlantProfile.class);
+            Intent access = new Intent(Home.this, PlantProfile.class);
             startActivity(access);
         }
 //        else if (id == R.id.nav_slideshow) {
