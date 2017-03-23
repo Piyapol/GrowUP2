@@ -1,5 +1,6 @@
 package com.example.xeus_labmacbook.growup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,9 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class Flowerpot extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView listView;
+    private FlowerpotAdapter flowerpotAdapter;
+    int[] image;
+    String[] names = {"Peace lily", "Chrysanthemum"};
+    String[] connect = {"Connect Device:", "Connect Device:"};
+    String[] status = {"OFF","ON"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,18 @@ public class Flowerpot extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         this.setTitle("My Flowerpot");
+
+        listView = (ListView) findViewById(R.id.listView_Flowerpot);
+        image = new int[]{ R.drawable.thermometer, R.drawable.humidity};
+        ArrayList<FlowerpotList> arrayList = new ArrayList<>();
+        for(int i = 0 ; i < image.length ; i++){
+            arrayList.add(new FlowerpotList(image[i], names[i], connect[i], status[i]));
+        }
+
+        flowerpotAdapter = new FlowerpotAdapter(getBaseContext(), R.layout.flowerpot_list, arrayList);
+
+        listView.setAdapter(flowerpotAdapter);
+
     }
 
     @Override
@@ -59,10 +82,16 @@ public class Flowerpot extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            onMenuSettingClick(item);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void onMenuSettingClick( MenuItem item){
+
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -72,8 +101,11 @@ public class Flowerpot extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_flowerpot) {
-            // Handle the camera action
+            Intent access = new Intent(Flowerpot.this, Flowerpot.class);
+            startActivity(access);
         } else if (id == R.id.nav_plant) {
+            Intent access = new Intent(Flowerpot.this, PlantProfile.class);
+            startActivity(access);
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

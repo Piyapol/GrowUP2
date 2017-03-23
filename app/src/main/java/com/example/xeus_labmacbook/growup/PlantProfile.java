@@ -1,9 +1,7 @@
 package com.example.xeus_labmacbook.growup;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,9 +10,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class PlantProfile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView listView;
+    private PlantProfileAdapter plantProfileAdapter;
+    int[] image;
+    String[] names = {"Peace lily", "Chrysanthemum"};
+    String[] detail = {"That TonMai", "That MaMuang"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +32,6 @@ public class PlantProfile extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,6 +43,19 @@ public class PlantProfile extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         this.setTitle("Plant Profile");
+
+        listView = (ListView) findViewById(R.id.listView_PlantProfile);
+        image = new int[]{ R.drawable.thermometer, R.drawable.humidity};
+        ArrayList<PlantList> arrayList = new ArrayList<>();
+        for(int i = 0 ; i < image.length ; i++){
+            arrayList.add(new PlantList(image[i], names[i], detail[i]));
+        }
+
+        plantProfileAdapter = new PlantProfileAdapter(getBaseContext(), R.layout.plant_list, arrayList);
+
+        listView.setAdapter(plantProfileAdapter);
+
+
     }
 
     @Override
@@ -83,11 +97,13 @@ public class PlantProfile extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_flowerpot) {
-            // Handle the camera action
+            Intent access = new Intent(PlantProfile.this, Flowerpot.class);
+            startActivity(access);
         } else if (id == R.id.nav_plant) {
+            Intent access = new Intent(PlantProfile.this, PlantProfile.class);
+            startActivity(access);
 
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -1,21 +1,21 @@
 package com.example.xeus_labmacbook.growup;
 
 /**
- * Created by DuckWalkZ on 21/3/2560.
+ * Created by DuckWalkZ on 23/3/2560.
  */
 
-public class PlantList {
+public class FlowerpotList {
     private int mImgResource;
     private String mTextLine1;
     private String mTextLine2;
+    private String mTextLine3;
 
 
-
-    public PlantList(int imgResource, String textLine1, String textLine2) {
+    public FlowerpotList(int imgResource, String textLine1, String textLine2, String textLine3) {
         mImgResource = imgResource;
         mTextLine1 = textLine1;
         mTextLine2 = textLine2;
-
+        mTextLine3 = textLine3;
     }
 
     public void setImgResource(int imgResource) {
@@ -39,5 +39,11 @@ public class PlantList {
         return mTextLine2;
     }
 
+    public void setTextLine3(String textLine3) {
+        mTextLine3 = textLine3;
+    }
+    public String getTextLine3() {
+        return mTextLine3;
+    }
 
 }
