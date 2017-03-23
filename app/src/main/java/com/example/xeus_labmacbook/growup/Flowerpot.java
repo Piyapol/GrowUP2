@@ -9,9 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class Flowerpot extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView listView;
+    private FlowerpotAdapter flowerpotAdapter;
+    int[] image;
+    String[] names = {"Peace lily", "Chrysanthemum"};
+    String[] connect = {"Connect Device:", "Connect Device:"};
+    String[] status = {"OFF","ON"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +41,18 @@ public class Flowerpot extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         this.setTitle("My Flowerpot");
+
+        listView = (ListView) findViewById(R.id.listView_Flowerpot);
+        image = new int[]{ R.drawable.thermometer, R.drawable.humidity};
+        ArrayList<FlowerpotList> arrayList = new ArrayList<>();
+        for(int i = 0 ; i < image.length ; i++){
+            arrayList.add(new FlowerpotList(image[i], names[i], connect[i], status[i]));
+        }
+
+        flowerpotAdapter = new FlowerpotAdapter(getBaseContext(), R.layout.flowerpot_list, arrayList);
+
+        listView.setAdapter(flowerpotAdapter);
+
     }
 
     @Override
