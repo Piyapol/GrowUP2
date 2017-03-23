@@ -1,5 +1,6 @@
 package com.example.xeus_labmacbook.growup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -81,10 +82,16 @@ public class Flowerpot extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            onMenuSettingClick(item);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void onMenuSettingClick( MenuItem item){
+
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -94,8 +101,11 @@ public class Flowerpot extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_flowerpot) {
-            // Handle the camera action
+            Intent access = new Intent(Flowerpot.this, Flowerpot.class);
+            startActivity(access);
         } else if (id == R.id.nav_plant) {
+            Intent access = new Intent(Flowerpot.this, PlantProfile.class);
+            startActivity(access);
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

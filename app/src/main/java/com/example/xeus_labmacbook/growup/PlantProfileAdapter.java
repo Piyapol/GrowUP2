@@ -11,20 +11,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by DuckWalkZ on 21/3/2560.
+ * Created by DuckWalkZ on 23/3/2560.
  */
 
-public class PlantAdapter extends ArrayAdapter {
+public class PlantProfileAdapter extends ArrayAdapter {
     private Context mContext;
-    private ArrayList<Item> mArrayList;
+    private ArrayList<PlantList> mArrayList;
     private int mLayout;
 
-    public PlantAdapter(Context context, int layout, ArrayList<Item> arrayList) {
-        super(context, layout, arrayList);
+    public PlantProfileAdapter(Context context, int layout, ArrayList<PlantList> arrayList) {
+        super( context, layout, arrayList);
         mContext = context;
         mLayout = layout;
         mArrayList = arrayList;
     }
+
+    
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -35,17 +37,16 @@ public class PlantAdapter extends ArrayAdapter {
             view = inflater.inflate(mLayout, parent, false);
         }
 
-        Item item = mArrayList.get(position);
-
-        ImageView img = (ImageView) view.findViewById(R.id.imageView);
-        img.setImageResource(item.getImgResource());
-
-        TextView tv1 = (TextView)view.findViewById(R.id.textView_line1);
-        tv1.setText(item.getTextLine1());
-        TextView tv2 = (TextView)view.findViewById(R.id.textView_line2);
-        tv2.setText(item.getTextLine2());
-
+        PlantList plantList = mArrayList.get(position);
+        //กำหนดภาพให้แก่ ImageView
+        ImageView img = (ImageView) view.findViewById(R.id.imageViewPlant);
+        img.setImageResource(plantList.getImgResource());
+        //กำหนดข้อความในบรรทัดที่ 1 2 
+        TextView tv1 = (TextView)view.findViewById(R.id.textView_PlantName);
+        tv1.setText(plantList.getTextLine1());
+        TextView tv2 = (TextView)view.findViewById(R.id.textView_PlantDetail);
+        tv2.setText(plantList.getTextLine2());
+        
         return view;
     }
-
 }
