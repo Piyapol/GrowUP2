@@ -7,8 +7,8 @@ android {
     buildToolsVersion "25.0.1"
     defaultConfig {
         applicationId "com.example.xeus_labmacbook.growup"
-        manifestPlaceholders = [onesignal_app_id: "1ded887e-e33d-4c53-a703-b885e210ad91",
-                                onesignal_google_project_number: "603454001642"]
+//        manifestPlaceholders = [onesignal_app_id: "1ded887e-e33d-4c53-a703-b885e210ad91",
+//                                onesignal_google_project_number: "603454001642"]
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -46,12 +46,13 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     testCompile 'junit:junit:4.12'
 
-    compile 'com.onesignal:OneSignal:3.+@aar'
+//    compile 'com.onesignal:OneSignal:3.+@aar'
 
-    compile 'com.google.android.gms:play-services-gcm:+'
-    compile "com.google.android.gms:play-services-location:+"
-
+    compile 'com.google.android.gms:play-services-gcm:10.2.1'
+    compile "com.google.android.gms:play-services-location:10.2.1"
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
 }
 
-//apply plugin: 'com.google.gms.google-services'
+
+apply plugin: 'com.google.gms.google-services'

@@ -99,7 +99,7 @@ public class Login extends AppCompatActivity  {
                 }
                 else{
                     onLoginSuccess();
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    Intent intent = new Intent(getApplicationContext(), Flowerpot.class);
                     startActivityForResult(intent, REQUEST_LOGIN);
                     finish();
                 }

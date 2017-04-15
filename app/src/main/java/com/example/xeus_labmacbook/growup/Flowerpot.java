@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -53,6 +55,30 @@ public class Flowerpot extends AppCompatActivity
         flowerpotAdapter = new FlowerpotAdapter(getBaseContext(), R.layout.flowerpot_list, arrayList);
 
         listView.setAdapter(flowerpotAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0
+                    , View arg1, int arg2, long arg3) {
+                Intent intent;
+                switch(arg2) {
+                    case 0 :
+                        intent = new Intent(getApplicationContext()
+                                , Home.class);
+                        startActivity(intent);
+                        break;
+                    case 1 :
+                        intent = new Intent(getApplicationContext()
+                                , Home.class);
+                        startActivity(intent);
+                        break;
+//                    case 2 :
+//                        intent = new Intent(getApplicationContext()
+//                                , Page_Config.class);
+//                        startActivity(intent);
+//                        break;
+                }
+            }
+        });
 
     }
 
