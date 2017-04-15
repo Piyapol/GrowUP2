@@ -108,17 +108,18 @@ public class Flowerpot extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            onMenuSettingClick(item);
+//            onMenuSettingClick(item);
+            Intent intent = new Intent(this,Flowerpot_Add.class);
+            this.startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-    private void onMenuSettingClick( MenuItem item){
-
-
-    }
+//
+//    private void onMenuSettingClick( MenuItem item){
+//
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -136,6 +137,7 @@ public class Flowerpot extends AppCompatActivity
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }

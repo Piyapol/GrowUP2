@@ -15,11 +15,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <receiver android:name=".NetworkConnectReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
@@ -60,7 +58,8 @@
         <activity
             android:name=".Flowerpot"
             android:label="@string/title_activity_flowerpot"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Flowerpot_Add"></activity>
     </application>
 
 </manifest>
