@@ -133,8 +133,11 @@ public class Flowerpot extends AppCompatActivity
         } else if (id == R.id.nav_plant) {
             Intent access = new Intent(Flowerpot.this, PlantProfile.class);
             startActivity(access);
+        }else if(id == R.id.nav_logout){
 
         }
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 

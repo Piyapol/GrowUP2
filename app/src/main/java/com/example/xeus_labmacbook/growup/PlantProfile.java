@@ -103,6 +103,8 @@ public class PlantProfile extends AppCompatActivity
             Intent access = new Intent(PlantProfile.this, PlantProfile.class);
             startActivity(access);
 
+        }else if(id == R.id.nav_logout){
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

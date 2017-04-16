@@ -105,6 +105,8 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_plant) {
             Intent access = new Intent(Home.this, PlantProfile.class);
             startActivity(access);
+        } else if (id == R.id.nav_logout){
+
         }
 //        else if (id == R.id.nav_slideshow) {
 //
