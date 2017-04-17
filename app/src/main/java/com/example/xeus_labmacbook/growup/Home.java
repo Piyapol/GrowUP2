@@ -13,12 +13,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 //import com.onesignal.OneSignal;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Menu menu;
+    private TextView name;
+    private TextView email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +40,29 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+        name = (TextView)header.findViewById(R.id.tvName);
+        email = (TextView)header.findViewById(R.id.tvEmail);
+        name.setText("personName");
+        email.setText("personEmail");
+//        APIService apiService = APIClient.getRetrofit().create(APIService.class);
+//        Call<User> call = apiService.getUser();
+//        call.enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                name.setText(response.body().getName());
+//                email.setText(response.body().getEmail());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User>call, Throwable t) {
+//                // Log error here since request failed
+//                Log.e(" MAIN  onFailure ", t.toString());
+//
+//            }
+//        });
 
         this.setTitle("GrowUP");
-
-
 
         createTabs();
 
@@ -108,18 +131,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_logout){
 
         }
-//        else if (id == R.id.nav_slideshow) {
-//
-//        } else
-//        if (id == R.id.nav_manage) {
-//            Intent access = new Intent(this, Setting.class);
-//            startActivity(access);
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

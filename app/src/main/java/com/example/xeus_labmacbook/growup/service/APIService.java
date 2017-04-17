@@ -4,6 +4,7 @@ import com.example.xeus_labmacbook.growup.model.ControlModel;
 import com.example.xeus_labmacbook.growup.model.EnviromentalModel;
 import com.example.xeus_labmacbook.growup.model.RegisterModel;
 import com.example.xeus_labmacbook.growup.model.ServerResponse;
+import com.example.xeus_labmacbook.growup.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -18,6 +19,10 @@ import retrofit2.http.POST;
 public interface APIService {
     @GET("getStatusR.php")
     Call<EnviromentalModel> getData();
+
+    @FormUrlEncoded
+    @POST("login.php")
+    Call<User> getUser();
 
     @FormUrlEncoded
     @POST("login.php")
