@@ -8,8 +8,8 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -62,7 +62,8 @@
             android:name=".Flowerpot"
             android:label="@string/title_activity_flowerpot"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Flowerpot_Add"></activity>
+        <activity android:name=".Flowerpot_Add" />
+        <activity android:name=".Plant_Detail"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <ImageView android:src="@drawable/peacelily1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView android:id="@+id/plant_need"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Plant needs"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:textSize="18dip"/>
+
+        <TextView
+            android:id="@+id/watering"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Watering: Normally"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+        <TextView
+            android:id="@+id/sunlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Sunlight: a litter"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+        <TextView
+            android:id="@+id/temperatures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Temperatures: 23 - 27C"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+        <TextView android:id="@+id/planting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Planting"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:textSize="18dip"/>
+
+        <TextView
+            android:id="@+id/sub_plating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Propagate from the seed. Sow on Sphagnum moss in spring, or when ripe at 23-27 C can also propagate by division in winter early spring or right after the flowering"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+        <TextView android:id="@+id/growth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Growth"
+            android:textColor="@color/black"
+            android:textSize="18dip"/>
+
+        <TextView
+            android:id="@+id/sub_growth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Evergreen perennials. Large Dark grren leaves on stalks that rise directly from soil. Good in pots, 1.5-6 feet tall , depending on species.Grows best in deep shade with high humidity. if not locates in warm regions, plant Spathiphyllum in a warm greenhouse or conservatiry"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+        <TextView android:id="@+id/blooming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Blooming"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:textSize="18dip"/>
+
+        <TextView
+            android:id="@+id/sub_blooming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Flowers resemble Calla Lily, a central column of tiny, closely set flowers surrounded by a leaf like bract"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+
+        <TextView android:id="@+id/soil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Soil and Irrigation"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:textSize="18dip"/>
+
+        <TextView
+            android:id="@+id/sub_soil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="244dp"
+            android:text="Needs regular water to thrive, however,Peace Lilies can wilt very badly and still recover with a thorough watering"
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+        <TextView android:id="@+id/climate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Plant growth climates"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:textSize="18dip"/>
+
+        <TextView
+            android:id="@+id/sub_climate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Hardliness zone: 8 -15
+This plnt can suffer irreversible damage and potentially die when the temperature reaches -6.5 C or less
+Heatzone: 1- 12 "
+            android:textSize="16dp"
+            android:gravity="left"/>
+
+
+    </LinearLayout>
+</ScrollView>
+
