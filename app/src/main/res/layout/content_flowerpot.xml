@@ -10,11 +10,63 @@
     android:layout_marginBottom="20dp"
     tools:showIn="@layout/app_bar_flowerpot">
 
-    <ListView
+    <!--<ListView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/listView_Flowerpot"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true" />-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageViewFlowerpot"
+        android:layout_margin="5dp"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView_Flowerpot"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="#Flowerpot Name"
+        android:textSize="25sp"
+        android:id="@+id/textView_FlowerpotName"
+        android:layout_below="@+id/imageViewFlowerpot"
+        android:layout_margin="5dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="#Flower Type"
+        android:textSize="25sp"
+        android:id="@+id/textView_FlowerpotType"
+        android:layout_below="@+id/textView_FlowerpotName"
+        android:layout_margin="5dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect Device:"
+        android:textSize="18sp"
+        android:id="@+id/textView_Connect"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/textView_FlowerpotType"
+        android:layout_alignLeft="@+id/textView_FlowerpotType"
+        android:layout_alignStart="@+id/textView_FlowerpotType" />
+
+    <TextView
+        android:id="@+id/textView_Status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" OFF"
+        android:textSize="18dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/textView_FlowerpotType"
+        android:layout_toRightOf="@+id/textView_Connect"
+        android:layout_toEndOf="@+id/textView_Connect"/>
+
 
 </RelativeLayout>

@@ -1,8 +1,11 @@
 package com.example.xeus_labmacbook.growup;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +32,17 @@ public class Login extends AppCompatActivity  {
     private static final int REQUEST_SIGNUP = 0;
     private  static  final int REQUEST_LOGIN = 0;
 
+    private UserManager mManager;
+
+
+    final String PREF_NAME = "LoginPreferences";
+    final String KEY_USERNAME = "Username";
+    private static final String IS_LOGIN = "IsLoggedIn";
+
+    Context _context;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
     @BindView(R.id.btn_login) Button _loginButton;
@@ -41,6 +55,8 @@ public class Login extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        mManager  = new UserManager(this);
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -79,8 +95,10 @@ public class Login extends AppCompatActivity  {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        String email = _emailText.getText().toString().trim().toLowerCase();
+        String password = _passwordText.getText().toString().trim();
+
+
 
         APIService service = APIClient.getRetrofit().create(APIService.class);
 
@@ -140,8 +158,8 @@ public class Login extends AppCompatActivity  {
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
+//        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        createMessageDialog();
         _loginButton.setEnabled(true);
     }
 
@@ -168,5 +186,15 @@ public class Login extends AppCompatActivity  {
         return valid;
     }
 
+    public void createMessageDialog(){
+        new AlertDialog.Builder(Login.this)
+                .setIcon(R.drawable.dialog)
+                .setTitle("Alert")
+                .setMessage("Login Fail !!")
+               .show();
+    }
 
+    private void checkLogin(){
+
+    }
 }

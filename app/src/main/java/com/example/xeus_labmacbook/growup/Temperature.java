@@ -96,8 +96,8 @@ public class Temperature extends Fragment{
                                 response.body().getData().get(i).getAirhumidValue()));
                         arrayList.add(new Item(icons[2], names[2], units[2],
                                 response.body().getData().get(i).getSoilValue()));
-                        arrayList.add(new Item(icons[3], names[3], units[3],
-                                response.body().getData().get(i).getLightValue()));
+//                        arrayList.add(new Item(icons[3], names[3], units[3],
+//                                response.body().getData().get(i).getLightValue()));
                         arrayList.add(new Item(icons[4], names[4], units[4],
                                 response.body().getData().get(i).getWaterlvlValue()));
                     //}

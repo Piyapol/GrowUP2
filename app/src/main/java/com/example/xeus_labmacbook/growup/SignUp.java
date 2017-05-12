@@ -1,6 +1,7 @@
 package com.example.xeus_labmacbook.growup;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,8 @@ import retrofit2.Response;
 public class SignUp extends AppCompatActivity {
 
     private static final String TAG = "SignupActivity";
+    private Context mContext;
+    private UserManager mManager;
 
     @BindView(R.id.input_name) EditText _nameText;
 //    @Bind(R.id.input_address) EditText _addressText;
@@ -40,6 +43,9 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_sign_up);
         ButterKnife.bind(this);
+
+        mManager = new UserManager(this);
+        mContext = this;
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +67,6 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signup() {
-
-
         Log.e(TAG, "Signup");
 
         if (!validate()) {
@@ -78,9 +82,9 @@ public class SignUp extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        String name = _nameText.getText().toString();
+        String name = _nameText.getText().toString().trim().toLowerCase();
 //        String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
+        String email = _emailText.getText().toString().trim().toLowerCase();
 //        String mobile = _mobileText.getText().toString();
         String password = _passwordText.getText().toString();
 //        String reEnterPassword = _reEnterPasswordText.getText().toString();

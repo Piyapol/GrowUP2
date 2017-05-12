@@ -1,5 +1,6 @@
 package com.example.xeus_labmacbook.growup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -7,23 +8,30 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
+
+import static com.example.xeus_labmacbook.growup.R.id.imageViewFlowerpot;
+import static java.security.AccessController.getContext;
 
 public class Flowerpot extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ListView listView;
-    private FlowerpotAdapter flowerpotAdapter;
-    int[] image;
-    String[] names = {"Peace lily", "Chrysanthemum"};
-    String[] connect = {"Connect Device:", "Connect Device:"};
-    String[] status = {"OFF","ON"};
+    private static final String TAG = "FlowerPotActivity";
+    private ImageView mImg;
+    private TextView mName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,52 +40,24 @@ public class Flowerpot extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-
-        this.setTitle("My Flowerpot");
-
-        listView = (ListView) findViewById(R.id.listView_Flowerpot);
-        image = new int[]{ R.drawable.thermometer, R.drawable.humidity};
-        ArrayList<FlowerpotList> arrayList = new ArrayList<>();
-        for(int i = 0 ; i < image.length ; i++){
-            arrayList.add(new FlowerpotList(image[i], names[i], connect[i], status[i]));
-        }
-
-        flowerpotAdapter = new FlowerpotAdapter(getBaseContext(), R.layout.flowerpot_list, arrayList);
-
-        listView.setAdapter(flowerpotAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> arg0
-                    , View arg1, int arg2, long arg3) {
-                Intent intent;
-                switch(arg2) {
-                    case 0 :
-                        intent = new Intent(getApplicationContext()
-                                , Home.class);
-                        startActivity(intent);
-                        break;
-                    case 1 :
-                        intent = new Intent(getApplicationContext()
-                                , Home.class);
-                        startActivity(intent);
-                        break;
-//                    case 2 :
-//                        intent = new Intent(getApplicationContext()
-//                                , Page_Config.class);
-//                        startActivity(intent);
-//                        break;
-                }
+        mImg = (ImageView)findViewById(R.id.imageViewFlowerpot);
+        mImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                Log.e(TAG,"Success");
             }
         });
+
+//        Glide.with(getContext())
+//                .load(url)
+//                .placeholder(R.drawable.dialog)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .crossFade()
+//                .into(imageViewFlowerpot);
+
+        this.setTitle("My Flowerpot");
 
     }
 
@@ -108,17 +88,14 @@ public class Flowerpot extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 //            onMenuSettingClick(item);
-            Intent intent = new Intent(this,Flowerpot_Add.class);
-            this.startActivity(intent);
+            Intent intent = new Intent(Flowerpot.this,Flowerpot_Add.class);
+            startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-//
-//    private void onMenuSettingClick( MenuItem item){
-//
-//    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -141,4 +118,6 @@ public class Flowerpot extends AppCompatActivity
 
         return true;
     }
+
+
 }

@@ -1,6 +1,8 @@
 package com.example.xeus_labmacbook.growup;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -11,26 +13,43 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.xeus_labmacbook.growup.model.User;
+import com.example.xeus_labmacbook.growup.network.APIClient;
+import com.example.xeus_labmacbook.growup.service.APIService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 //import com.onesignal.OneSignal;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+    final String PREF_NAME = "LoginPreferences";
+    final String KEY_USERNAME = "Username";
+    private static final String IS_LOGIN = "IsLoggedIn";
+    Context _context;
+
+
     private Menu menu;
     private TextView name;
     private TextView email;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        OneSignal.startInit(this).init();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,24 +62,24 @@ public class Home extends AppCompatActivity
         View header=navigationView.getHeaderView(0);
         name = (TextView)header.findViewById(R.id.tvName);
         email = (TextView)header.findViewById(R.id.tvEmail);
-        name.setText("personName");
-        email.setText("personEmail");
-//        APIService apiService = APIClient.getRetrofit().create(APIService.class);
-//        Call<User> call = apiService.getUser();
-//        call.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                name.setText(response.body().getName());
-//                email.setText(response.body().getEmail());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User>call, Throwable t) {
-//                // Log error here since request failed
-//                Log.e(" MAIN  onFailure ", t.toString());
-//
-//            }
-//        });
+//        name.setText("personName");
+//        email.setText("personEmail");
+        APIService apiService = APIClient.getRetrofit().create(APIService.class);
+        Call<User> call = apiService.getUser();
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                name.setText(response.body().getName());
+                email.setText(response.body().getEmail());
+            }
+
+            @Override
+            public void onFailure(Call<User>call, Throwable t) {
+                // Log error here since request failed
+                Log.e(" MAIN  onFailure ", t.toString());
+
+            }
+        });
 
         this.setTitle("GrowUP");
 
@@ -80,7 +99,6 @@ public class Home extends AppCompatActivity
 
         tabLayout.getTabAt(0).setIcon(R.drawable.dashboard);
         tabLayout.getTabAt(1).setIcon(R.drawable.controls);
-//        tabLayout.getTabAt(2).setIcon(R.drawable.time);
     }
 
 
@@ -129,12 +147,29 @@ public class Home extends AppCompatActivity
             Intent access = new Intent(Home.this, PlantProfile.class);
             startActivity(access);
         } else if (id == R.id.nav_logout){
-
+           logoutUser();
         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void logoutUser(){
+        // Clearing all data from Shared Preferences
+        editor.clear();
+        editor.commit();
+
+        // After logout redirect user to Loing Activity
+        Intent i = new Intent(_context, Login.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Staring Login Activity
+        _context.startActivity(i);
     }
 }
