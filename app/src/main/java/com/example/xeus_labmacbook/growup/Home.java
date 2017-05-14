@@ -26,7 +26,7 @@ import com.example.xeus_labmacbook.growup.service.APIService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-//import com.onesignal.OneSignal;
+
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,22 +64,22 @@ public class Home extends AppCompatActivity
         email = (TextView)header.findViewById(R.id.tvEmail);
 //        name.setText("personName");
 //        email.setText("personEmail");
-        APIService apiService = APIClient.getRetrofit().create(APIService.class);
-        Call<User> call = apiService.getUser();
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                name.setText(response.body().getName());
-                email.setText(response.body().getEmail());
-            }
-
-            @Override
-            public void onFailure(Call<User>call, Throwable t) {
-                // Log error here since request failed
-                Log.e(" MAIN  onFailure ", t.toString());
-
-            }
-        });
+//        APIService apiService = APIClient.getRetrofit().create(APIService.class);
+//        Call<User> call = apiService.getUser();
+//        call.enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                name.setText(response.body().getName());
+//                email.setText(response.body().getEmail());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User>call, Throwable t) {
+//                // Log error here since request failed
+//                Log.e(" MAIN  onFailure ", t.toString());
+//
+//            }
+//        });
 
         this.setTitle("GrowUP");
 

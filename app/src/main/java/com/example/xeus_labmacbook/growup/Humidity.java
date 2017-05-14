@@ -51,6 +51,13 @@ public class Humidity extends Fragment {
         sw2 = (Switch) rootView.findViewById(R.id.switchControl2);
         sw3 = (Switch) rootView.findViewById(R.id.switchControl3);
 
+         sw1.setChecked(true);
+        if(sw1.isChecked()){
+            Toast.makeText(getContext(), "Automatic mode is On", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(getContext(), "Automatic mode is Off", Toast.LENGTH_LONG).show();
+        }
+
         return rootView;
     }
 
@@ -58,7 +65,7 @@ public class Humidity extends Fragment {
     public void onResume() {
         super.onResume();
 
-        cdt = new CountDownTimer(1000, 7000) {
+        cdt = new CountDownTimer(1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
 
@@ -67,6 +74,7 @@ public class Humidity extends Fragment {
             public void onFinish() {
 
                 cdt.start();
+                checkedSwitch();
                 SendData();
                 Log.e(TAG,"Sendata");
             }
@@ -108,6 +116,21 @@ public class Humidity extends Fragment {
                 Toast.makeText(getContext(), "Send Data onFailure", Toast.LENGTH_LONG).show();
             }
         });
+
+    }
+
+    private void checkedSwitch(){
+
+        if(sw1.isChecked() == true)
+        {
+            sw2.setEnabled(false);
+            sw3.setEnabled(false);
+//            Toast.makeText(getContext(), "Automatic mode is On", Toast.LENGTH_LONG).show();
+        }else{
+            sw2.setEnabled(true);
+            sw3.setEnabled(true);
+//            Toast.makeText(getContext(), "Automatic mode is Off", Toast.LENGTH_LONG).show();
+        }
 
     }
    }
