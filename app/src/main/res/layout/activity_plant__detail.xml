@@ -14,7 +14,8 @@
 
         <ImageView android:src="@drawable/peacelily1"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_height="150dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
@@ -61,7 +62,7 @@
             android:text="Planting"
             android:textColor="@color/black"
             android:gravity="left"
-            android:textSize="18dip"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/sub_plating"
@@ -78,7 +79,7 @@
             android:layout_marginBottom="5dp"
             android:text="Growth"
             android:textColor="@color/black"
-            android:textSize="18dip"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/sub_growth"
@@ -96,7 +97,7 @@
             android:text="Blooming"
             android:textColor="@color/black"
             android:gravity="left"
-            android:textSize="18dip"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/sub_blooming"
@@ -115,13 +116,13 @@
             android:text="Soil and Irrigation"
             android:textColor="@color/black"
             android:gravity="left"
-            android:textSize="18dip"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/sub_soil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="244dp"
+            android:layout_marginBottom="24dp"
             android:text="Needs regular water to thrive, however,Peace Lilies can wilt very badly and still recover with a thorough watering"
             android:textSize="16dp"
             android:gravity="left"/>
@@ -133,7 +134,7 @@
             android:text="Plant growth climates"
             android:textColor="@color/black"
             android:gravity="left"
-            android:textSize="18dip"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/sub_climate"

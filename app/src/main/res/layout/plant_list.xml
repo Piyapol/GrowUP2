@@ -25,15 +25,15 @@
             android:layout_toRightOf="@+id/imageViewPlant"
             android:layout_toEndOf="@+id/imageViewPlant" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:textSize="20sp"
-            android:id="@+id/textView_PlantDetail"
-            android:layout_marginBottom="5dp"
-            android:layout_below="@+id/textView_PlantName"
-            android:layout_alignLeft="@+id/textView_PlantName"
-            android:layout_alignStart="@+id/textView_PlantName" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="New Text"-->
+            <!--android:textSize="20sp"-->
+            <!--android:id="@+id/textView_PlantDetail"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:layout_below="@+id/textView_PlantName"-->
+            <!--android:layout_alignLeft="@+id/textView_PlantName"-->
+            <!--android:layout_alignStart="@+id/textView_PlantName" />-->
 
 </RelativeLayout>

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.mukesh.tinydb.TinyDB;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class Flowerpot extends AppCompatActivity
     private static final String TAG = "FlowerPotActivity";
     private ImageView mImg;
     private TextView mName;
-
+    private TinyDB tinyDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,10 @@ public class Flowerpot extends AppCompatActivity
         setContentView(R.layout.activity_flowerpot);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        tinyDB = new TinyDB(getApplicationContext());
+
+        tinyDB.getString("user_uid");
 
         mImg = (ImageView)findViewById(R.id.imageViewFlowerpot);
         mImg.setOnClickListener(new View.OnClickListener() {
@@ -50,12 +55,12 @@ public class Flowerpot extends AppCompatActivity
             }
         });
 
-//        Glide.with(getContext())
-//                .load(url)
-//                .placeholder(R.drawable.dialog)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .crossFade()
-//                .into(imageViewFlowerpot);
+        Glide.with(getApplicationContext())
+                .load("http://128.199.137.189/Images/ram.jpg")
+                .placeholder(R.drawable.flower)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .crossFade()
+                .into(mImg);
 
         this.setTitle("My Flowerpot");
 

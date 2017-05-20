@@ -19,16 +19,17 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:src="@drawable/flower"
-        android:layout_height="150dp"
+        android:src="@drawable/flower1"
+        android:layout_height="250dp"
         android:id="@+id/imageViewFlowerpot"
+        android:scaleType="centerCrop"
         android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="#Flowerpot Name"
+        android:text="NuuNoi"
         android:textSize="25sp"
         android:id="@+id/textView_FlowerpotName"
         android:layout_below="@+id/imageViewFlowerpot"
@@ -39,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="#Flower Type"
+        android:text="Chrysanthemum"
         android:textSize="25sp"
         android:id="@+id/textView_FlowerpotType"
         android:layout_below="@+id/textView_FlowerpotName"
@@ -61,7 +62,7 @@
         android:id="@+id/textView_Status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" OFF"
+        android:text=" ON"
         android:textSize="18dp"
         android:layout_marginBottom="5dp"
         android:layout_marginRight="5dp"

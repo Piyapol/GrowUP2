@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.mukesh.tinydb.TinyDB;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ public class Flowerpot_Add extends AppCompatActivity {
 
     int TAKE_PHOTO_CODE = 0;
     public static int count = 0;
+
+    private TinyDB  tinydb;
 
     private Spinner profileSpinner;
     private ArrayList<String> mProfile = new ArrayList<String>();
@@ -87,7 +91,6 @@ public class Flowerpot_Add extends AppCompatActivity {
     private void createProfileData(){
         mProfile.add("Peace lily");
         mProfile.add("Chrysanthemum");
-        mProfile.add("Rose");
     }
 
 }

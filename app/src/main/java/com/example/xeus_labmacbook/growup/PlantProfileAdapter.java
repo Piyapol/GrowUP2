@@ -44,8 +44,8 @@ public class PlantProfileAdapter extends ArrayAdapter {
         //กำหนดข้อความในบรรทัดที่ 1 2 
         TextView tv1 = (TextView)view.findViewById(R.id.textView_PlantName);
         tv1.setText(plantList.getTextLine1());
-        TextView tv2 = (TextView)view.findViewById(R.id.textView_PlantDetail);
-        tv2.setText(plantList.getTextLine2());
+//        TextView tv2 = (TextView)view.findViewById(R.id.textView_PlantDetail);
+//        tv2.setText(plantList.getTextLine2());
         
         return view;
     }

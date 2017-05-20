@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.example.xeus_labmacbook.growup.model.User;
 import com.example.xeus_labmacbook.growup.network.APIClient;
 import com.example.xeus_labmacbook.growup.service.APIService;
+import com.mukesh.tinydb.TinyDB;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +38,7 @@ public class Home extends AppCompatActivity
     final String KEY_USERNAME = "Username";
     private static final String IS_LOGIN = "IsLoggedIn";
     Context _context;
-
+    TinyDB tinyDB;
 
     private Menu menu;
     private TextView name;
@@ -57,31 +58,22 @@ public class Home extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        tinyDB = new TinyDB(getApplicationContext());
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header=navigationView.getHeaderView(0);
         name = (TextView)header.findViewById(R.id.tvName);
         email = (TextView)header.findViewById(R.id.tvEmail);
-//        name.setText("personName");
-//        email.setText("personEmail");
-//        APIService apiService = APIClient.getRetrofit().create(APIService.class);
-//        Call<User> call = apiService.getUser();
-//        call.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                name.setText(response.body().getName());
-//                email.setText(response.body().getEmail());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User>call, Throwable t) {
-//                // Log error here since request failed
-//                Log.e(" MAIN  onFailure ", t.toString());
-//
-//            }
-//        });
+
+        name.setText(tinyDB.getString("user_name"));
+        email.setText(tinyDB.getString("user_email"));
 
         this.setTitle("GrowUP");
+        tinyDB.getBoolean("check_login");
+        tinyDB.getString("user_uid");
+
 
         createTabs();
 
@@ -158,18 +150,9 @@ public class Home extends AppCompatActivity
 
     public void logoutUser(){
         // Clearing all data from Shared Preferences
-        editor.clear();
-        editor.commit();
+        tinyDB.clear();
 
-        // After logout redirect user to Loing Activity
-        Intent i = new Intent(_context, Login.class);
-        // Closing all the Activities
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        // Add new Flag to start new Activity
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        // Staring Login Activity
-        _context.startActivity(i);
+        Intent intent = new Intent(Home.this,Login.class);
+        startActivity(intent);
     }
 }

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.xeus_labmacbook.growup.model.ServerResponse;
 import com.example.xeus_labmacbook.growup.network.APIClient;
 import com.example.xeus_labmacbook.growup.service.APIService;
+import com.mukesh.tinydb.TinyDB;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,16 +33,7 @@ public class Login extends AppCompatActivity  {
     private static final int REQUEST_SIGNUP = 0;
     private  static  final int REQUEST_LOGIN = 0;
 
-    private UserManager mManager;
-
-
-    final String PREF_NAME = "LoginPreferences";
-    final String KEY_USERNAME = "Username";
-    private static final String IS_LOGIN = "IsLoggedIn";
-
-    Context _context;
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+    private TinyDB tinyDB;
 
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
@@ -56,7 +48,8 @@ public class Login extends AppCompatActivity  {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        mManager  = new UserManager(this);
+        tinyDB = new TinyDB(getApplicationContext());
+
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -77,7 +70,10 @@ public class Login extends AppCompatActivity  {
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
+
+        checkLogin();
     }
+
 
     public void login() {
         Log.e(TAG, "Login");
@@ -116,6 +112,12 @@ public class Login extends AppCompatActivity  {
                    onLoginFailed();
                 }
                 else{
+
+                    tinyDB.putBoolean("check_login", true);
+                    tinyDB.putString("user_uid", response.body().getUid());
+                    tinyDB.putString("user_name", response.body().getUser().getName());
+                    tinyDB.putString("user_email", response.body().getUser().getEmail());
+
                     onLoginSuccess();
                     Intent intent = new Intent(getApplicationContext(), Flowerpot.class);
                     startActivityForResult(intent, REQUEST_LOGIN);
@@ -194,7 +196,13 @@ public class Login extends AppCompatActivity  {
                .show();
     }
 
-    private void checkLogin(){
+    private void checkLogin()
+    {
+        if(tinyDB.getBoolean("check_login") == true)
+        {
+            Intent intent = new Intent(Login.this,Flowerpot.class);
+            startActivity(intent);
+        }
 
     }
 }

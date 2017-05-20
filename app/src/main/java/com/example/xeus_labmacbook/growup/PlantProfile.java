@@ -46,7 +46,7 @@ public class PlantProfile extends AppCompatActivity
         this.setTitle("Plant Profile");
 
         listView = (ListView) findViewById(R.id.listView_PlantProfile);
-        image = new int[]{ R.drawable.lily, R.drawable.chrysanthemum};
+        image = new int[]{ R.drawable.flower1, R.drawable.flower2};
         ArrayList<PlantList> arrayList = new ArrayList<>();
         for(int i = 0 ; i < image.length ; i++){
             arrayList.add(new PlantList(image[i], names[i], detail[i]));
