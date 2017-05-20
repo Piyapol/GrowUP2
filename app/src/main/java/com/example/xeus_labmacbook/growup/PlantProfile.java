@@ -46,7 +46,7 @@ public class PlantProfile extends AppCompatActivity
         this.setTitle("Plant Profile");
 
         listView = (ListView) findViewById(R.id.listView_PlantProfile);
-        image = new int[]{ R.drawable.flower1, R.drawable.flower2};
+        image = new int[]{ R.drawable.peace, R.drawable.chy};
         ArrayList<PlantList> arrayList = new ArrayList<>();
         for(int i = 0 ; i < image.length ; i++){
             arrayList.add(new PlantList(image[i], names[i], detail[i]));
@@ -66,11 +66,11 @@ public class PlantProfile extends AppCompatActivity
                                 , Plant_Detail.class);
                         startActivity(intent);
                         break;
-//                    case 1 :
-//                        intent = new Intent(getApplicationContext()
-//                                , Home.class);
-//                        startActivity(intent);
-//                        break;
+                    case 1 :
+                        intent = new Intent(getApplicationContext()
+                                , Plants_Chy.class);
+                        startActivity(intent);
+                        break;
 //                    case 2 :
 //                        intent = new Intent(getApplicationContext()
 //                                , Page_Config.class);

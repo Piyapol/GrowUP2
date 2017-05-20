@@ -63,7 +63,8 @@
             android:label="@string/title_activity_flowerpot"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Flowerpot_Add" />
-        <activity android:name=".Plant_Detail"></activity>
+        <activity android:name=".Plant_Detail" />
+        <activity android:name=".Plants_Chy"></activity>
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
 
-        <ImageView android:src="@drawable/peace"
+        <ImageView android:src="@drawable/chy"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
             android:layout_height="200dp"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Sunlight: a litter"
+            android:text="Sunlight: 4 hour at night"
             android:textSize="16dp"
             android:gravity="left"/>
 
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Temperatures: 23 - 27C"
+            android:text="Temperatures: 10 - 40C"
             android:textSize="16dp"
             android:gravity="left"/>
 
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Propagate from the seed. Sow on Sphagnum moss in spring, or when ripe at 23-27 C can also propagate by division in winter early spring or right after the flowering"
+            android:text="Mums are easily propagated vegatatively via rooted cuttings.Be sure to give adequate water to recent tranplants as they may not have sufficient root systems ti accommodate their thirsty leaves.A misting irrigation unit is ideal,with mist intervals decreasing in number as the cuttings gain strength."
             android:textSize="16dp"
             android:gravity="left"/>
 
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Evergreen perennials. Large Dark grren leaves on stalks that rise directly from soil. Good in pots, 1.5-6 feet tall , depending on species.Grows best in deep shade with high humidity. if not locates in warm regions, plant Spathiphyllum in a warm greenhouse or conservatiry"
+            android:text="Almost every Chrysabthemum does best with full sun. Chrysabthemum are ahuge group of plants that require a wide variety of plant growth needs."
             android:textSize="16dp"
             android:gravity="left"/>
 
@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Flowers resemble Calla Lily, a central column of tiny, closely set flowers surrounded by a leaf like bract"
+            android:text="Blooming usually occurs in fall, due to the shortening of day-length.Blooms can be forced artificially by restricting the amount of light the plant receives, thus mimicking a shorter day.Inversely,increaseing the amount of light the plant receives, thus mimicking a shorter day."
             android:textSize="16dp"
             android:gravity="left"/>
 
@@ -123,29 +123,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Needs regular water to thrive, however,Peace Lilies can wilt very badly and still recover with a thorough watering"
+            android:text="Generally, Mums need high levels of organic matter in their soils to thrive. The soil should be well-drained. Water stress early in propagation can result in smaller blooms, so water plants carefully.Using drip irrigation is a good idea, since keeping the folliage dry can help prevent certain diseases."
             android:textSize="16dp"
             android:gravity="left"/>
 
-        <TextView android:id="@+id/climate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Plant growth climates"
-            android:textColor="@color/black"
-            android:gravity="left"
-            android:textSize="18dp"/>
+        <!--<TextView android:id="@+id/climate"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:text="Plant growth climates"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:gravity="left"-->
+            <!--android:textSize="18dp"/>-->
 
-        <TextView
-            android:id="@+id/sub_climate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="Hardliness zone: 8 -15
-This plnt can suffer irreversible damage and potentially die when the temperature reaches -6.5 C or less
-Heatzone: 1- 12 "
-            android:textSize="16dp"
-            android:gravity="left"/>
+        <!--<TextView-->
+            <!--android:id="@+id/sub_climate"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="4dp"-->
+            <!--android:text="Hardliness zone: 8 -15-->
+<!--This plnt can suffer irreversible damage and potentially die when the temperature reaches -6.5 C or less-->
+<!--Heatzone: 1- 12 "-->
+            <!--android:textSize="16dp"-->
+            <!--android:gravity="left"/>-->
 
 
     </LinearLayout>
