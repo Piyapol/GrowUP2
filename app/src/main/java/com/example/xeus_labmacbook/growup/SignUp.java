@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.xeus_labmacbook.growup.model.RegisterModel;
 import com.example.xeus_labmacbook.growup.network.APIClient;
 import com.example.xeus_labmacbook.growup.service.APIService;
+import com.mukesh.tinydb.TinyDB;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +28,7 @@ public class SignUp extends AppCompatActivity {
 
     private static final String TAG = "SignupActivity";
     private Context mContext;
-    private UserManager mManager;
+    private TinyDB tinyDB;
 
     @BindView(R.id.input_name) EditText _nameText;
 //    @Bind(R.id.input_address) EditText _addressText;
@@ -44,7 +45,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.content_sign_up);
         ButterKnife.bind(this);
 
-        mManager = new UserManager(this);
+        tinyDB = new TinyDB(getApplicationContext());
         mContext = this;
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +109,11 @@ public class SignUp extends AppCompatActivity {
                     onSignupFailed();
                 }
                 else{
+                    tinyDB.putBoolean("check_sig",true);
+                    tinyDB.putString("sig_uid",response.body().getUid()+"");
+                    tinyDB.putString("sig_name",response.body().getUser().getName()+"");
+                    tinyDB.putString("sig_email",response.body().getUser().getEmail()+"");
+
                     onSignupSuccess();
                     Intent intent = new Intent(getApplicationContext(), Home.class);
                     startActivity(intent);

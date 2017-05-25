@@ -1,10 +1,11 @@
 package com.example.xeus_labmacbook.growup.service;
 
+import com.example.xeus_labmacbook.growup.model.AddProfile;
 import com.example.xeus_labmacbook.growup.model.ControlModel;
 import com.example.xeus_labmacbook.growup.model.EnviromentalModel;
 import com.example.xeus_labmacbook.growup.model.RegisterModel;
+
 import com.example.xeus_labmacbook.growup.model.ServerResponse;
-import com.example.xeus_labmacbook.growup.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -20,9 +21,7 @@ public interface APIService {
     @GET("getStatusR.php")
     Call<EnviromentalModel> getData();
 
-    @FormUrlEncoded
-    @POST("login.php")
-    Call<User> getUser();
+
 
     @FormUrlEncoded
     @POST("login.php")
@@ -46,5 +45,14 @@ public interface APIService {
             @Field("sw_water") boolean sw_water,
             @Field("sw_light") boolean sw_light,
             @Field("repeat") boolean repeat
+    );
+
+    @FormUrlEncoded
+    @POST("addprofile.php")
+    Call<AddProfile> AddPrpfile(
+            @Field("uid") String uid,
+            @Field("name") String name,
+            @Field("type") String type
+
     );
 }

@@ -1,24 +1,32 @@
 package com.example.xeus_labmacbook.growup.model;
 
-import com.google.gson.annotations.Expose;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Response{
 
-	@SerializedName("ctrl")
-	@Expose
-	private Ctrl ctrl;
+	@SerializedName("uid")
+	private int uid;
 
-	@SerializedName("error")
-	@Expose
-	private boolean error;
+	@SerializedName("pot")
+	private Pot pot;
 
-	public void setCtrl(Ctrl ctrl){
-		this.ctrl = ctrl;
+	@SerializedName("error")private boolean error;
+
+	public void setUid(int uid){
+		this.uid = uid;
 	}
 
-	public Ctrl getCtrl(){
-		return ctrl;
+	public int getUid(){
+		return uid;
+	}
+
+	public void setPot(Pot pot){
+		this.pot = pot;
+	}
+
+	public Pot getPot(){
+		return pot;
 	}
 
 	public void setError(boolean error){
@@ -33,7 +41,8 @@ public class Response{
  	public String toString(){
 		return 
 			"Response{" + 
-			"ctrl = '" + ctrl + '\'' + 
+			"uid = '" + uid + '\'' + 
+			",pot = '" + pot + '\'' + 
 			",error = '" + error + '\'' + 
 			"}";
 		}

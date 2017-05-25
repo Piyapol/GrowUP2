@@ -4,7 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.*;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -56,6 +59,7 @@ public class Login extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 login();
+                checkNetworkConnection();
             }
         });
 
@@ -204,5 +208,22 @@ public class Login extends AppCompatActivity  {
             startActivity(intent);
         }
 
+    }
+
+    private void checkNetworkConnection(){
+        ConnectivityManager connectMan =
+                (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+
+        NetworkInfo netInfo = connectMan.getActiveNetworkInfo(); //เครือข่ายที่กำลังเชื่อมต่อ
+        String str = "";
+        if(netInfo != null && netInfo.isConnected())  {
+            str = "Connect with: " + netInfo.getTypeName();
+
+        } else {
+            str = "Not Connect";
+            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+        }
+
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
 }
