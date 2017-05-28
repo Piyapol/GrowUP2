@@ -151,7 +151,6 @@ public class Home extends AppCompatActivity
     public void logoutUser(){
         // Clearing all data from Shared Preferences
         tinyDB.clear();
-
         Intent intent = new Intent(Home.this,Login.class);
         startActivity(intent);
     }

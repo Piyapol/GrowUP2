@@ -9,6 +9,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class ServerResponse {
 
+        @SerializedName("id")
+        @Expose
+        private String id;
+
         @SerializedName("uid")
         @Expose
         private String uid;
@@ -20,6 +24,14 @@ public class ServerResponse {
         @SerializedName("user")
         @Expose
         private User user;
+
+        public void setId(String id){
+            this.id = id;
+        }
+
+        public String getId(){
+            return id;
+        }
 
         public void setUid(String uid){
             this.uid = uid;

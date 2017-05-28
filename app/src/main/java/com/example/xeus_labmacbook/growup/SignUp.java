@@ -110,9 +110,9 @@ public class SignUp extends AppCompatActivity {
                 }
                 else{
                     tinyDB.putBoolean("check_sig",true);
-                    tinyDB.putString("sig_uid",response.body().getUid()+"");
-                    tinyDB.putString("sig_name",response.body().getUser().getName()+"");
-                    tinyDB.putString("sig_email",response.body().getUser().getEmail()+"");
+                    tinyDB.putString("user_uid",response.body().getUid()+"");
+                    tinyDB.putString("user_name",response.body().getUser().getName()+"");
+                    tinyDB.putString("user_email",response.body().getUser().getEmail()+"");
 
                     onSignupSuccess();
                     Intent intent = new Intent(getApplicationContext(), Home.class);

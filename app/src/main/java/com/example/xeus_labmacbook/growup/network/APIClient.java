@@ -12,6 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIClient {
 
     public static final String BASE_URL = "http://128.199.137.189/";
+    public static final String BASE_URL_IMAGE = "http://128.199.137.189/Images/";
+
     private static Retrofit retrofit = null;
 
     public static Retrofit getRetrofit() {

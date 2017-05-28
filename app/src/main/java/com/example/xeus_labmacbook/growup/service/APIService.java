@@ -7,11 +7,15 @@ import com.example.xeus_labmacbook.growup.model.RegisterModel;
 
 import com.example.xeus_labmacbook.growup.model.ServerResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 /**
  * Created by DuckWalkZ on 28/2/2560.
@@ -49,10 +53,19 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("addprofile.php")
-    Call<AddProfile> AddPrpfile(
+    Call<AddProfile> AddProfile(
             @Field("uid") String uid,
             @Field("name") String name,
-            @Field("type") String type
+            @Field("type") String type,
+            @Part("image") RequestBody image
+    );
 
+    @Multipart
+    @POST("addprofile.php")
+    Call<AddProfile> AddProfile2(
+            @Part("user_id") RequestBody  uid,
+            @Part("name") RequestBody  name,
+            @Part("type") RequestBody  type,
+            @Part MultipartBody.Part file
     );
 }

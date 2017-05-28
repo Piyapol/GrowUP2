@@ -118,6 +118,7 @@ public class Login extends AppCompatActivity  {
                 else{
 
                     tinyDB.putBoolean("check_login", true);
+                    tinyDB.putString("user_id", response.body().getId());
                     tinyDB.putString("user_uid", response.body().getUid());
                     tinyDB.putString("user_name", response.body().getUser().getName());
                     tinyDB.putString("user_email", response.body().getUser().getEmail());
