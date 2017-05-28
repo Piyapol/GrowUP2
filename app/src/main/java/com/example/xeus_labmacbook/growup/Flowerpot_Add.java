@@ -1,5 +1,7 @@
 package com.example.xeus_labmacbook.growup;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,7 +45,7 @@ public class Flowerpot_Add extends AppCompatActivity {
     private EditText name;
     String dir;
     private Button btn_save;
-    String uid ;
+    String id ;
     private Spinner profileSpinner;
     private ArrayList<String> mProfile = new ArrayList<String>();
     private String Temp_selectedItem = "";
@@ -58,12 +60,16 @@ public class Flowerpot_Add extends AppCompatActivity {
 
         tinydb = new TinyDB(getApplicationContext());
 
-        uid = tinydb.getString("user_id");
+
+        id = tinydb.getString("user_id");
 
         btn_save = (Button)findViewById(R.id.btn_save);
         btn_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 SentData();
+                Intent intent = new Intent(getApplicationContext(), Flowerpot.class);
+                startActivity(intent);
+                Log.e(TAG,"Save Data Success");
             }
         });
 
@@ -156,62 +162,18 @@ public class Flowerpot_Add extends AppCompatActivity {
         mProfile.add("Chrysanthemum");
     }
 
-    //Image Upload
-    private void uploadFile(Uri fileUri) {
-//        // create upload service client
-//        FileUploadService service =
-//                ServiceGenerator.createService(FileUploadService.class);
-//
-//        // https://github.com/iPaulPro/aFileChooser/blob/master/aFileChooser/src/com/ipaulpro/afilechooser/utils/FileUtils.java
-//        // use the FileUtils to get the actual file by uri
-//        File file = FileUtils.getFile(this, fileUri);
-//
-//        // create RequestBody instance from file
-//        RequestBody requestFile =
-//                RequestBody.create(
-//                        MediaType.parse(getContentResolver().getType(fileUri)),
-//                        file
-//                );
-//
-//        // MultipartBody.Part is used to send also the actual file name
-//        MultipartBody.Part body =
-//                MultipartBody.Part.createFormData("picture", file.getName(), requestFile);
-//
-//        // add another part within the multipart request
-//        String descriptionString = "hello, this is description speaking";
-//        RequestBody description =
-//                RequestBody.create(
-//                        okhttp3.MultipartBody.FORM, descriptionString);
-//
-//        // finally, execute the request
-//        Call<ResponseBody> call = service.upload(description, body);
-//        call.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call,
-//                                   Response<ResponseBody> response) {
-//                Log.v("Upload", "success");
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                Log.e("Upload error:", t.getMessage());
-//            }
-//        });
-    }
-
 
     private void SentData(){
 
         File file = new File(Store_path_image.getPath());
 
-
         RequestBody reqFile = RequestBody.create(MediaType.parse("image/jpeg"), file);
         MultipartBody.Part image = MultipartBody.Part.createFormData("file_img", file.getName(), reqFile);
 
-        Log.e(TAG, " uid : "+uid);
+        Log.e(TAG, " uid : "+id);
         Log.e(TAG, " Store_path_image.getPath() : "+Store_path_image.getPath());
 
-        RequestBody uid_form = RequestBody.create( okhttp3.MultipartBody.FORM, uid);
+        RequestBody uid_form = RequestBody.create( okhttp3.MultipartBody.FORM, id);
         RequestBody name_form = RequestBody.create( okhttp3.MultipartBody.FORM, name.getText().toString());
         RequestBody profileSpinner_form = RequestBody.create( okhttp3.MultipartBody.FORM, Temp_selectedItem);
 
@@ -222,6 +184,10 @@ public class Flowerpot_Add extends AppCompatActivity {
         call.enqueue(new Callback<AddProfile>(){
             @Override
             public void onResponse(Call<AddProfile> call, Response<AddProfile> response) {
+
+                tinydb.putString("fp_name",response.body().getPot().getName());
+                tinydb.putString("fp_type",response.body().getPot().getType());
+                tinydb.putString("fp_image",response.body().getPot().getImage());
                 Log.e(TAG,"Success");
             }
 

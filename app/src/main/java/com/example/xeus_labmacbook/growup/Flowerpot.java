@@ -21,9 +21,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mukesh.tinydb.TinyDB;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import static com.example.xeus_labmacbook.growup.R.id.imageViewFlowerpot;
+import static com.example.xeus_labmacbook.growup.network.APIClient.BASE_URL_IMAGE;
 import static java.security.AccessController.getContext;
 
 public class Flowerpot extends AppCompatActivity
@@ -32,6 +35,9 @@ public class Flowerpot extends AppCompatActivity
     private static final String TAG = "FlowerPotActivity";
     private ImageView mImg;
     private TextView mName;
+    private TextView mFPName;
+    private TextView mFPType;
+    private TextView mConn;
     private TinyDB tinyDB;
 
     @Override
@@ -55,8 +61,22 @@ public class Flowerpot extends AppCompatActivity
             }
         });
 
+        mFPName = (TextView)findViewById(R.id.textView_FlowerpotName);
+
+        mFPType = (TextView)findViewById(R.id.textView_FlowerpotType);
+
+        mConn = (TextView)findViewById(R.id.textView_Status);
+
+
+        if(tinyDB.getString("fp_name") != null || tinyDB.getString("fp_type") != null ){
+            mConn.setText(tinyDB.getString("fp_name"));
+        }else{
+            mFPName.setText(tinyDB.getString("fp_name"));
+            mFPType.setText(tinyDB.getString("fp_type"));
+        }
+
         Glide.with(getApplicationContext())
-                .load("http://128.199.137.189/Images/ram.jpg")
+                .load(BASE_URL_IMAGE+tinyDB.getString("fp_image"))
                 .placeholder(R.drawable.flower)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .crossFade()
