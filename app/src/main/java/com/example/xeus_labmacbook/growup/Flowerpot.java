@@ -12,18 +12,23 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+
 import android.widget.ImageView;
-import android.widget.ListView;
+
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.xeus_labmacbook.growup.model.DataItem;
+import com.example.xeus_labmacbook.growup.model.GetDataProfile;
+import com.example.xeus_labmacbook.growup.model.ProfileData;
+import com.example.xeus_labmacbook.growup.model.Response;
+import com.example.xeus_labmacbook.growup.network.APIClient;
+import com.example.xeus_labmacbook.growup.service.APIService;
 import com.mukesh.tinydb.TinyDB;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 import static com.example.xeus_labmacbook.growup.R.id.imageViewFlowerpot;
 import static com.example.xeus_labmacbook.growup.network.APIClient.BASE_URL_IMAGE;
@@ -39,6 +44,7 @@ public class Flowerpot extends AppCompatActivity
     private TextView mFPType;
     private TextView mConn;
     private TinyDB tinyDB;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +55,8 @@ public class Flowerpot extends AppCompatActivity
 
         tinyDB = new TinyDB(getApplicationContext());
 
-        tinyDB.getString("user_uid");
+        id = tinyDB.getString("user_id");
+        Log.e(TAG,tinyDB.getString("user_id"));
 
         mImg = (ImageView)findViewById(R.id.imageViewFlowerpot);
         mImg.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +64,7 @@ public class Flowerpot extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Home.class);
                 startActivity(intent);
-                Log.e(TAG,"Success");
+                Log.e(TAG,"Intent Success");
             }
         });
 
@@ -68,21 +75,9 @@ public class Flowerpot extends AppCompatActivity
         mConn = (TextView)findViewById(R.id.textView_Status);
 
 
-        if(tinyDB.getString("fp_name") != null || tinyDB.getString("fp_type") != null ){
-            mConn.setText(tinyDB.getString("fp_name"));
-        }else{
-            mFPName.setText(tinyDB.getString("fp_name"));
-            mFPType.setText(tinyDB.getString("fp_type"));
-        }
-
-        Glide.with(getApplicationContext())
-                .load(BASE_URL_IMAGE+tinyDB.getString("fp_image"))
-                .placeholder(R.drawable.flower)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .crossFade()
-                .into(mImg);
-
         this.setTitle("My Flowerpot");
+
+        GetDataProfile();
 
     }
 
@@ -142,6 +137,48 @@ public class Flowerpot extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+
+    private  void GetDataProfile()
+    {
+        APIService apiService = APIClient.getRetrofit().create(APIService.class);
+        Call<GetDataProfile> call = apiService.getDataProfile(id);
+        call.enqueue(new Callback<GetDataProfile>() {
+            @Override
+            public void onResponse(Call<GetDataProfile> call, retrofit2.Response<GetDataProfile> response) {
+                for(int i = 0 ; i < response.body().getData().size() ; i++) {
+                    if (response.body().getData().get(i).getPlantName() == "" || response.body().getData().get(i).getPlantType() == "") {
+                        mFPName.setText("#Flowerpot Name");
+                        mFPType.setText("#Plant Type");
+                    } else {
+                        mFPName.setText(response.body().getData().get(i).getPlantName());
+                        mFPType.setText(response.body().getData().get(i).getPlantType());
+                    }
+
+                    Log.e(TAG, response.body().getData().get(i).getPlantName());
+                    Log.e(TAG, response.body().getData().get(i).getPlantType());
+                    Log.e(TAG, response.body().getData().get(i).getPlantImage());
+
+                    Glide.with(getApplicationContext())
+                            .load(BASE_URL_IMAGE + response.body().getData().get(i).getPlantImage())
+                            .placeholder(R.drawable.flower)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .crossFade()
+                            .into(mImg);
+
+                    Log.e(TAG, "Success");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetDataProfile>call, Throwable t) {
+                // Log error here since request failed
+                Log.e(TAG, "False");
+
+            }
+        });
+
     }
 
 

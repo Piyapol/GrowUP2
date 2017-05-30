@@ -53,7 +53,6 @@ public class Login extends AppCompatActivity  {
 
         tinyDB = new TinyDB(getApplicationContext());
 
-
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

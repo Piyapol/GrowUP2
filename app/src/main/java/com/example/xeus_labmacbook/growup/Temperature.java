@@ -86,7 +86,7 @@ public class Temperature extends Fragment{
                 ArrayList<Item> arrayList = new ArrayList<>();
                 for(int i = 0 ; i < response.body().getData().size() ; i++)
                 {
-                    Log.e(" MAIN "," CusID : "+response.body().getData().get(i).getCusId());
+                    Log.e(" MAIN "," CusID : "+response.body().getData().get(i).getUserId());
 
                     //for(int j = 0; j < names.length; j++) {
 //                        arrayList.add(new Item(icons[0], names[0], units[0], " "));

@@ -3,7 +3,10 @@ package com.example.xeus_labmacbook.growup;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +54,9 @@ public class SignUp extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 signup();
+                checkNetworkConnection();
             }
         });
 
@@ -65,6 +70,8 @@ public class SignUp extends AppCompatActivity {
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
+
+        checkSignup();
     }
 
     public void signup() {
@@ -110,13 +117,14 @@ public class SignUp extends AppCompatActivity {
                 }
                 else{
                     tinyDB.putBoolean("check_sig",true);
+                    tinyDB.putString("user_id",response.body().getId()+"");
                     tinyDB.putString("user_uid",response.body().getUid()+"");
                     tinyDB.putString("user_name",response.body().getUser().getName()+"");
                     tinyDB.putString("user_email",response.body().getUser().getEmail()+"");
 
                     onSignupSuccess();
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(getApplicationContext(), Home.class);
+//                    startActivity(intent);
                     finish();
                 }
 
@@ -141,7 +149,8 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Signup failed", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(), "Signup failed", Toast.LENGTH_LONG).show();
+        createMessageDialog();
         _signupButton.setEnabled(true);
     }
 
@@ -201,6 +210,40 @@ public class SignUp extends AppCompatActivity {
         return valid;
     }
 
+    private void checkSignup()
+    {
+        if(tinyDB.getBoolean("check_sig") == true)
+        {
+            Intent intent = new Intent(SignUp.this,Flowerpot.class);
+            startActivity(intent);
+        }
+
+    }
+
+    public void createMessageDialog(){
+        new AlertDialog.Builder(SignUp.this)
+                .setIcon(R.drawable.warning)
+                .setTitle("Alert")
+                .setMessage("Signup Fail !!")
+                .show();
+    }
+
+    private void checkNetworkConnection(){
+        ConnectivityManager connectMan =
+                (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+
+        NetworkInfo netInfo = connectMan.getActiveNetworkInfo(); //เครือข่ายที่กำลังเชื่อมต่อ
+        String str = "";
+        if(netInfo != null && netInfo.isConnected())  {
+            str = "Connect with: " + netInfo.getTypeName();
+
+        } else {
+            str = "Not Connect";
+            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+        }
+
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
 
 
 //    private void GetData(User user) {

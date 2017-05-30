@@ -5,23 +5,23 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Response{
+public class GetDataProfile{
 
 	@SerializedName("data")
-	private List<DataItem> data;
+	private List<ProfileData> data;
 
-	public void setData(List<DataItem> data){
+	public void setData(List<ProfileData> data){
 		this.data = data;
 	}
 
-	public List<DataItem> getData(){
+	public List<ProfileData> getData(){
 		return data;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"Response{" + 
+			"GetDataProfile{" + 
 			"data = '" + data + '\'' + 
 			"}";
 		}

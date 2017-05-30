@@ -22,7 +22,7 @@
         android:src="@drawable/flower"
         android:layout_height="250dp"
         android:id="@+id/imageViewFlowerpot"
-         />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,30 +46,30 @@
         android:layout_margin="5dp"
         android:layout_centerInParent="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connect Device:"
-        android:textSize="18sp"
-        android:id="@+id/textView_Connect"
-        android:layout_marginBottom="5dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/textView_FlowerpotType"
-        android:layout_alignLeft="@+id/textView_FlowerpotType"
-        android:layout_alignStart="@+id/textView_FlowerpotType" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Connect Device:"-->
+        <!--android:textSize="18sp"-->
+        <!--android:id="@+id/textView_Connect"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_below="@+id/textView_FlowerpotType"-->
+        <!--android:layout_alignLeft="@+id/textView_FlowerpotType"-->
+        <!--android:layout_alignStart="@+id/textView_FlowerpotType" />-->
 
-    <TextView
-        android:id="@+id/textView_Status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" ON"
-        android:textSize="18dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/textView_FlowerpotType"
-        android:layout_toRightOf="@+id/textView_Connect"
-        android:layout_toEndOf="@+id/textView_Connect"/>
+    <!--<TextView-->
+        <!--android:id="@+id/textView_Status"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=" ON"-->
+        <!--android:textSize="18dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_below="@+id/textView_FlowerpotType"-->
+        <!--android:layout_toRightOf="@+id/textView_Connect"-->
+        <!--android:layout_toEndOf="@+id/textView_Connect"/>-->
 
 
 </RelativeLayout>

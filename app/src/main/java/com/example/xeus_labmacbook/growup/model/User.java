@@ -1,25 +1,9 @@
 package com.example.xeus_labmacbook.growup.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-
 public class User{
-
-	@SerializedName("updated_at")
-	@Expose
 	private Object updatedAt;
-
-	@SerializedName("name")
-	@Expose
 	private String name;
-
-	@SerializedName("created_at")
-	@Expose
 	private String createdAt;
-
-	@SerializedName("email")
-	@Expose
 	private String email;
 
 	public void setUpdatedAt(Object updatedAt){
@@ -64,5 +48,4 @@ public class User{
 			",email = '" + email + '\'' + 
 			"}";
 		}
-
 }

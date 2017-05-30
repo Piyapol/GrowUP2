@@ -67,8 +67,7 @@ public class Flowerpot_Add extends AppCompatActivity {
         btn_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 SentData();
-                Intent intent = new Intent(getApplicationContext(), Flowerpot.class);
-                startActivity(intent);
+
                 Log.e(TAG,"Save Data Success");
             }
         });
@@ -170,7 +169,7 @@ public class Flowerpot_Add extends AppCompatActivity {
         RequestBody reqFile = RequestBody.create(MediaType.parse("image/jpeg"), file);
         MultipartBody.Part image = MultipartBody.Part.createFormData("file_img", file.getName(), reqFile);
 
-        Log.e(TAG, " uid : "+id);
+        Log.e(TAG, " id : "+id);
         Log.e(TAG, " Store_path_image.getPath() : "+Store_path_image.getPath());
 
         RequestBody uid_form = RequestBody.create( okhttp3.MultipartBody.FORM, id);
@@ -185,9 +184,13 @@ public class Flowerpot_Add extends AppCompatActivity {
             @Override
             public void onResponse(Call<AddProfile> call, Response<AddProfile> response) {
 
-                tinydb.putString("fp_name",response.body().getPot().getName());
-                tinydb.putString("fp_type",response.body().getPot().getType());
-                tinydb.putString("fp_image",response.body().getPot().getImage());
+//                tinydb.putString("fp_name",response.body().getPot().getName());
+//                tinydb.putString("fp_type",response.body().getPot().getType());
+//                tinydb.putString("fp_image",response.body().getPot().getImage());
+
+                Intent intent = new Intent(getApplicationContext(), Flowerpot.class);
+                startActivity(intent);
+
                 Log.e(TAG,"Success");
             }
 

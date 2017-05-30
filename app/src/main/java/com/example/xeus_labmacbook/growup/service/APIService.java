@@ -2,9 +2,13 @@ package com.example.xeus_labmacbook.growup.service;
 
 import com.example.xeus_labmacbook.growup.model.AddProfile;
 import com.example.xeus_labmacbook.growup.model.ControlModel;
+import com.example.xeus_labmacbook.growup.model.DataItem;
 import com.example.xeus_labmacbook.growup.model.EnviromentalModel;
+import com.example.xeus_labmacbook.growup.model.GetDataProfile;
+import com.example.xeus_labmacbook.growup.model.ProfileData;
 import com.example.xeus_labmacbook.growup.model.RegisterModel;
 
+import com.example.xeus_labmacbook.growup.model.Response;
 import com.example.xeus_labmacbook.growup.model.ServerResponse;
 
 import okhttp3.MultipartBody;
@@ -24,7 +28,6 @@ import retrofit2.http.Part;
 public interface APIService {
     @GET("getStatusR.php")
     Call<EnviromentalModel> getData();
-
 
 
     @FormUrlEncoded
@@ -68,4 +71,13 @@ public interface APIService {
             @Part("type") RequestBody  type,
             @Part MultipartBody.Part file
     );
+
+
+    @FormUrlEncoded
+    @POST("getprofile.php")
+    Call<GetDataProfile> getDataProfile(
+            @Field("id") String id
+
+    );
+
 }
